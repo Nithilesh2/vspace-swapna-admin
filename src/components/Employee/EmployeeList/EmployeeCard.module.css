@@ -1,0 +1,78 @@
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 300px;
+  width: 350px;
+}
+
+.profile {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.profileIcon {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.profile h2 {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+.profile p {
+  font-size: 1rem;
+  color: #333;
+  margin: 5px 0;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.suspendBtn {
+  padding: 8px 15px;
+  font-size: 14px;
+  color: white;
+  background-color: #f44336;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.suspended {
+  background-color: #f1c40f;
+}
+
+.editBtn {
+  padding: 8px 15px;
+  font-size: 14px;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.confirmSuspend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.confirmSuspend button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

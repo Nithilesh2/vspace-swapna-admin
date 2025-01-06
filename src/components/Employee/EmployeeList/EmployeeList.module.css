@@ -1,0 +1,99 @@
+.main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.employeeList {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  background-color: #3aafa9;
+  width: 100%;
+  padding-left: 3rem;
+  padding-top: 2rem;
+}
+.employeeListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2rem;
+}
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.suspendBtn {
+  background-color: #f44336;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.suspendBtn.suspended {
+  background-color: #bdbdbd;
+}
+
+.suspendBtn:hover {
+  background-color: #d32f2f;
+}
+
+.editBtn {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.editBtn:hover {
+  background-color: #388e3c;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2b7a78;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.toggleBtnInSideMenu {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.userIcon {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

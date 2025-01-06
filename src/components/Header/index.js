@@ -4,15 +4,25 @@ import {
   FaCar,
   FaClipboardList,
   FaCreditCard,
+  FaList,
   FaMapMarkerAlt,
   FaTachometerAlt,
+  FaUserPlus,
   FaUsers,
   FaUserTie,
 } from "react-icons/fa";
 import "./index.css";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null); // To track active sub-menu
+
+  const handleMenuClick = (menu) => {
+    setActiveMenu((prev) => (prev === menu ? null : menu)); // Toggle sub-menu
+  };
+
+  const navigate = useNavigate()
 
   return (
     <div className={`navbar-container ${toggleMenu ? "collapsed" : ""}`}>
@@ -28,7 +38,7 @@ const Header = () => {
         className={`swapna-logo ${toggleMenu ? "hidden" : ""}`}
       />
 
-      <div className="menu-item">
+      <div className="menu-item" onClick={() => navigate('/home')}>
         <FaTachometerAlt size={20} />
         {!toggleMenu && <h1>Dashboard</h1>}
       </div>
@@ -58,10 +68,22 @@ const Header = () => {
         {!toggleMenu && <h1>Tracking</h1>}
       </div>
 
-      <div className="menu-item">
+      <div className="menu-item" onClick={() => handleMenuClick("employees")}>
         <FaUserTie size={20} />
         {!toggleMenu && <h1>Employees</h1>}
       </div>
+      {activeMenu === "employees" && (
+        <div className="submenu">
+          <div className="submenu-item" onClick={()=>navigate("/employeeList")}>
+          <FaList size={20} />
+            {!toggleMenu && <h1>List of Employees</h1>}
+          </div>
+          <div className="submenu-item">
+          <FaUserPlus size={20} />
+            {!toggleMenu && <h1>Add New Employee</h1>}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
