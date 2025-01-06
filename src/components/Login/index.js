@@ -7,7 +7,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent default form submission
-    navigate('/OverviewCards'); // Redirect to the OverviewCards page
+    navigate('/home'); // Redirect to the OverviewCards page
   };
 
   return (
