@@ -1,0 +1,187 @@
+/* Container Styling */
+.overview-container {
+  width: 100vw;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #3aafa9;
+  flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.overview {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: #feffff;
+  background-color: #111827;
+  height: 40px;
+  width: 40px; /* Make width and height equal for a round shape */
+  text-align: center;
+  border-radius: 50%; /* Ensures the background is perfectly round */
+  display: flex;
+  align-items: center; /* Vertically center the icon */
+  justify-content: center; /* Horizontally center the icon */
+}
+
+.title {
+  font-weight: bold;
+}
+
+.rupee-icon {
+  font-size: 25px;
+}
+/* Card Styling */
+.overview-card {
+  background-color: #def2f1;
+  margin: 10px;
+  border-radius: 15px;
+  padding: 20px;
+  padding-bottom: 0px;
+  width: 35%;
+  max-width: 280px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative; /* For positioning the icon */
+  text-align: left; /* Align text to the left */
+  /* Ensure all cards have the same height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card Title and Icon Styling */
+.card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #4b5563;
+  position: relative;
+}
+
+.card-title span {
+  margin-left: 10px;
+}
+
+.card-title i {
+  font-size: 28px;
+  color: #6ee7b7;
+  position: absolute;
+  top: 0;
+  right: 0; /* Align icon to the top-right */
+}
+
+/* Pricing and Numbers Styling */
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #111827;
+}
+
+/* Percentage Increase Text Styling */
+p {
+  font-size: 14px;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+.increase {
+  color: #10b981;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.overview-header h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.overview-header .filter-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Container Styling */
+.overview-container {
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #3aafa9;
+  flex-wrap: wrap; /* Ensures responsiveness */
+  overflow-y: auto; /* Allow the main container to scroll vertically */
+  height: 100vh; /* Full height of the viewport */
+}
+
+.overview {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+.icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: #feffff;
+  background-color: #111827;
+  height: 40px;
+  width: 40px; /* Make width and height equal for a round shape */
+  text-align: center;
+  border-radius: 50%; /* Ensures the background is perfectly round */
+  display: flex;
+  align-items: center; /* Vertically center the icon */
+  justify-content: center; /* Horizontally center the icon */
+}
+
+.title {
+  font-weight: bold;
+}
+
+.rupee-icon {
+  font-size: 25px;
+}
+
+/* Card Styling */
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+  .overview-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .overview-card {
+    max-width: 100%; /* Take full width on smaller screens */
+  }
+}
+
+/* Adjust overflow and ensure vertical scrolling */
+body,
+html {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Ensure responsiveness */
+@media (max-width: 768px) {
+  .overview-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .overview-card {
+    max-width: 100%; /* Take full width on smaller screens */
+  }
+}

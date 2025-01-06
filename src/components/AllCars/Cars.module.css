@@ -1,0 +1,20 @@
+.main {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.allCarsName {
+  margin: 1rem 0;
+  font-size: 2.4rem;
+}
+.allCars {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2.2rem;
+  margin-left: 2rem;
+}

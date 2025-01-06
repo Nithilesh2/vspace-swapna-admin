@@ -1,0 +1,72 @@
+.navbar-container {
+  width: 250px;
+  background-color: #0c2d48;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-family: Arial, sans-serif;
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar-container.collapsed {
+  width: 80px;
+}
+
+.toggleBtnInSideMenu {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+
+.toggleLogo {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.swapna-logo {
+  width: 150px;
+  margin: 0 auto 20px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.swapna-logo.hidden {
+  opacity: 0; 
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  gap: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-item:hover {
+  background-color: #3a506b;
+  border-radius: 8px;
+}
+
+.navbar-container.collapsed .menu-item {
+  justify-content: center;
+  gap: 0;
+}
+
+.navbar-container.collapsed .menu-item h1 {
+  display: none;
+}
+
+.menu-item h1 {
+  font-size: 16px;
+  color: #fff;
+  margin: 0;
+  font-weight: normal;
+}
