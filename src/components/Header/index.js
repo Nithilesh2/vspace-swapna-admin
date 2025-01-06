@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
-  FaBars,
+  FaChevronRight,
+  FaChevronLeft,
   FaCar,
   FaClipboardList,
   FaCreditCard,
@@ -15,22 +16,29 @@ import "./index.css";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [toggleMenu, setToggleMenu] = useState(false);
-  const [activeMenu, setActiveMenu] = useState(null); // To track active sub-menu
+  const [toggleMenu, setToggleMenu] = useState(false); // Sidebar toggle state
+  const [activeMenu, setActiveMenu] = useState(null); // Active submenu state
 
   const handleMenuClick = (menu) => {
-    setActiveMenu((prev) => (prev === menu ? null : menu)); // Toggle sub-menu
+    setActiveMenu((prev) => (prev === menu ? null : menu)); // Toggle submenu
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className={`navbar-container ${toggleMenu ? "collapsed" : ""}`}>
       <div className="toggleBtnInSideMenu">
-        <FaBars
-          className="toggleLogo"
-          onClick={() => setToggleMenu((prev) => !prev)}
-        />
+        {toggleMenu ? (
+          <FaChevronRight
+            className="toggleArrow"
+            onClick={() => setToggleMenu(false)}
+          />
+        ) : (
+          <FaChevronLeft
+            className="toggleArrow"
+            onClick={() => setToggleMenu(true)}
+          />
+        )}
       </div>
       <img
         src="https://res.cloudinary.com/dagkvnqd9/image/upload/v1726917662/WhatsApp_Image_2024-09-13_at_9.33.52_PM-removebg_oalbnc.png"
@@ -74,12 +82,12 @@ const Header = () => {
       </div>
       {activeMenu === "employees" && (
         <div className="submenu">
-          <div className="submenu-item" onClick={()=>navigate("/employeeList")}>
-          <FaList size={20} />
+          <div className="submenu-item" onClick={() => navigate("/employeeList")}>
+            <FaList size={20} />
             {!toggleMenu && <h1>List of Employees</h1>}
           </div>
           <div className="submenu-item">
-          <FaUserPlus size={20} />
+            <FaUserPlus size={20} />
             {!toggleMenu && <h1>Add New Employee</h1>}
           </div>
         </div>
