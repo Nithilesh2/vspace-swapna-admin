@@ -1,16 +1,15 @@
 .navbar-container {
-  width: 270px;
+  width: 280px;
   background-color: #2b7a78;
-  padding: 20px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 100vh;
+  height: auto;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   color: #fff;
   font-family: Arial, sans-serif;
   transition: width 0.3s ease-in-out;
-  height: auto;
 }
 
 .navbar-container.collapsed {
@@ -22,7 +21,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .toggleLogo {
@@ -88,7 +87,7 @@
 }
 
 .submenu-item {
-  padding: 8px;
+  padding: 8px 0 0 8px;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;

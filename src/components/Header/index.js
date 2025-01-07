@@ -92,9 +92,9 @@ const Header = () => {
             <FaList size={20} />
             {!toggleMenu && <h1>List of Employees</h1>}
           </div>
-          <div className="submenu-item">
+          <div className="submenu-item" onClick={() => navigate('/addemployeerole')}>
             <FaUserPlus size={20} />
-            {!toggleMenu && <h1>Add New Employee</h1>}
+            {!toggleMenu && <h1>Add Employee Role</h1>}
           </div>
         </div>
       )}
