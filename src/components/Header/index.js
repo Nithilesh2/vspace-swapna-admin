@@ -11,6 +11,7 @@ import {
   FaUserPlus,
   FaUsers,
   FaUserTie,
+  FaClipboardCheck,
 } from "react-icons/fa";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
@@ -74,6 +75,11 @@ const Header = () => {
       <div className="menu-item">
         <FaMapMarkerAlt size={20} />
         {!toggleMenu && <h1>Tracking</h1>}
+      </div>
+
+      <div className="menu-item" onClick={() => navigate('/assignorder')}>
+        <FaClipboardCheck  size={20} />
+        {!toggleMenu && <h1>Assign Order</h1>}
       </div>
 
       <div className="menu-item" onClick={() => handleMenuClick("employees")}>

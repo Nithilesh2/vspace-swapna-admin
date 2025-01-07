@@ -10,6 +10,7 @@
   color: #fff;
   font-family: Arial, sans-serif;
   transition: width 0.3s ease-in-out;
+  height: auto;
 }
 
 .navbar-container.collapsed {
@@ -17,7 +18,6 @@
 }
 
 .toggleBtnInSideMenu {
-  height: auto;
   width: 100%;
   display: flex;
   justify-content: flex-start;
