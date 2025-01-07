@@ -9,6 +9,9 @@ const SingleCar = (props) => {
           <img src={props.imgSrc} alt={props.imgAlt} />
         </div>
         <div className={styles.carName}>{props.imgName}</div>
+        <div className={styles.carDescription}>
+          {props.description}
+        </div>
       </div>
     </>
   )

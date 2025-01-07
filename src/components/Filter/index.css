@@ -20,8 +20,9 @@
     margin-right: 10px; /* Space between dropdown and filter form */
     padding: 5px;
     border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 14px; /* Match font size with labels */
+    border-radius: 20px;
+    font-size: 1rem; /* Match font size with labels */
+    padding-left: 15px;
   }
   
   /* Styling for the filter icon */
@@ -49,14 +50,17 @@
   /* Inputs inside the filter */
   .filter-form label {
     margin-right: 5px; /* Space between label and input */
-    font-size: 14px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 10px;
   }
   
   .filter-form input[type="date"] {
     margin-right: 10px; /* Space between inputs */
     padding: 5px;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 20px;
+    padding-left: 15px;
   }
 
   .date-range-dropdown{

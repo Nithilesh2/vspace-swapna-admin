@@ -3,19 +3,18 @@ import { HiAdjustmentsHorizontal } from "react-icons/hi2";
 import './index.css'; // Assuming you have a separate CSS file for styling
 
 const Filter = () => {
-  const [showFilter, setShowFilter] = useState(false); // State for toggling filter
+  const [showFilter, setShowFilter] = useState(true); // Filter is open by default
   const [dateRange, setDateRange] = useState(''); // State for selected date range
 
   // Function to toggle filter visibility
   const toggleFilter = () => {
-    setShowFilter(!showFilter);
+    setShowFilter((prevShowFilter) => !prevShowFilter);
   };
 
   // Function to handle dropdown change
   const handleDateRangeChange = (e) => {
     setDateRange(e.target.value);
-    // Here you can calculate and set the dates based on the selected range
-    // For example, if you select "1 month", set the input fields accordingly
+    // You can calculate and set the dates based on the selected range here
   };
 
   return (
@@ -38,7 +37,7 @@ const Filter = () => {
 
       {/* Filter form */}
       {showFilter && (
-        <div className={`filter-form`}>
+        <div className="filter-form">
           <label htmlFor="from-date">From Date:</label>
           <input type="date" id="from-date" />
 
@@ -48,8 +47,8 @@ const Filter = () => {
       )}
 
       {/* Filter Icon */}
-      <div 
-        className={`filter-icon ${showFilter ? 'active' : ''}`} 
+      <div
+        className={`filter-icon ${showFilter ? 'active' : ''}`}
         onClick={toggleFilter}
       >
         <HiAdjustmentsHorizontal />

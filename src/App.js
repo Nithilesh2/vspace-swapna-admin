@@ -7,6 +7,7 @@ import AssignOrder from './components/AssignOrder/AssignOrder';
 import AddEmployeeRole from './components/AddEmployeeRole/AddEmployeeRole';
 import AllCustomers from './components/AllCustomers/AllCustomers';
 import Payments from './components/Payments/Payments';
+import Cars from './components/AllCars/Cars';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/addemployeerole' element={<AddEmployeeRole />} />
       <Route path='/allcustomers' element={<AllCustomers />} />
       <Route path='/payments' element={<Payments />} />
+      <Route path='/allcars' element={<Cars />} />
       <Route path="/payments/:paymentType" element={<Payments />} />
       <Route path="/payments/:paymentType/:subMenuType" element={<Payments />} />
     </Routes>

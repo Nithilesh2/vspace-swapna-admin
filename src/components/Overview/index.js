@@ -5,7 +5,6 @@ import DashboardGraphs from '../DashboardGraphs';
 import Progressbars from '../CircularProgressBars';
 
 import './index.css';
-import Cars from '../AllCars/Cars';
 
 // Custom Carbon Growth Icon Component
 export function CarbonGrowth(props) {
@@ -98,10 +97,6 @@ const OverviewCards = () => {
       {/* Ensure progress bars are below everything */}
       <div className="progressbars-container">
         <Progressbars />
-      </div>
-
-      <div>
-        <Cars />
       </div>
     </div>
   );

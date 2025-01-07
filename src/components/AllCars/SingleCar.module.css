@@ -1,6 +1,7 @@
 .main{
-  height: 8.1rem;
-  width: 13rem;
+  cursor: default;
+  height: 11rem;
+  width: 16.7rem;
   background-color: #DEF2F1;
   border-radius: 20px;
   display: flex;
@@ -18,4 +19,13 @@
   font-size: 1.1rem;
   font-weight: 600;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.carDescription {
+  font-size: 14px;
+  color: #000000;
+  align-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
 }
