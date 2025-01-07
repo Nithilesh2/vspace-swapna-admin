@@ -13,6 +13,9 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   flex: 1;
   height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .heading {
   text-align: center;
@@ -20,38 +23,34 @@
   margin-bottom: 20px;
   color: #000000;
 }
-.payments {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 100%;
-  gap: 0.7rem;
+.paymentCategory {
+  margin: 10px 0;
 }
-.paymentMode {
-  height: 50px;
-  width: 100%;
+
+.checkboxContainer {
   display: flex;
   align-items: center;
-  gap: 1rem;
 }
-.paymentMode label{
-  margin-bottom: 0;
-}
-.checkBox {
-  height: 20px;
-  width: 20px;
-}
-.checkBox:checked {
-  accent-color: #2B7A78;
-}
-.paymentModeHeader{
+
+.paymentCategoryTitle {
+  margin-left: 10px;
   font-size: 1.2rem;
-  font-weight: 500;
-  color: black;
-  cursor: default;
 }
-.hLine{
-  width: 95%;
-  height: 1px;
-  background-color: #E6E6E6;
+
+.paymentList {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.paymentItem {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+.containerName {
+  width: 77%;
+  height: 77%;
+}
+.container h3{
+  margin: 1rem 0;
+  font-size: 1.6rem;
 }

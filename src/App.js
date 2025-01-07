@@ -18,6 +18,8 @@ function App() {
       <Route path='/addemployeerole' element={<AddEmployeeRole />} />
       <Route path='/allcustomers' element={<AllCustomers />} />
       <Route path='/payments' element={<Payments />} />
+      <Route path="/payments/:paymentType" element={<Payments />} />
+      <Route path="/payments/:paymentType/:subMenuType" element={<Payments />} />
     </Routes>
   );
 }
