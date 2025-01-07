@@ -47,39 +47,78 @@ const EmployeeList = () => {
       email: "vikas.gupta@example.com",
       designation: "Marketing Specialist",
     },
-  ]);
-  
+  ])
+
+  const [showPopup, setShowPopup] = useState(false)
+  const [password, setPassword] = useState("")
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null)
+  const [errorMessage, setErrorMessage] = useState("") 
 
   const handleSuspend = (id) => {
-    const confirmed = window.confirm(
-      "Are you sure you want to suspend this employee?"
-    )
-    if (confirmed) {
+    setSelectedEmployeeId(id)
+    setShowPopup(true)
+    setErrorMessage("") 
+  }
+
+  const handleConfirmSuspend = () => {
+    if (password === "admin123") {
       setEmployees((prevEmployees) =>
-        prevEmployees.filter((employee) => employee.id !== id)
+        prevEmployees.filter((employee) => employee.id !== selectedEmployeeId)
       )
+      setShowPopup(false)
+      alert("Employee suspended successfully!")
+    } else {
+      setErrorMessage("Incorrect password!")
     }
+  }
+
+  const handleCancel = () => {
+    setShowPopup(false)
   }
 
   return (
     <>
       <div className={styles.main}>
-      <Sidebar />
-      <div className={styles.employeeList}>
-        <div className={styles.employeeListContainer}>
-          {employees.map((employee) => (
-            <EmployeeCard
-              key={employee.id}
-              id={employee.id}
-              name={employee.name}
-              email={employee.email}
-              designation={employee.designation}
-              handleSuspend={handleSuspend}
-            />
-          ))}
+        <Sidebar />
+        <div className={styles.employeeList}>
+          <div className={styles.employeeListContainer}>
+            {employees.map((employee) => (
+              <EmployeeCard
+                key={employee.id}
+                id={employee.id}
+                name={employee.name}
+                email={employee.email}
+                designation={employee.designation}
+                handleSuspend={handleSuspend}
+              />
+            ))}
+          </div>
         </div>
       </div>
-      </div>
+
+      {showPopup && (
+        <div className={`${styles.popup} ${showPopup ? styles.show : ""}`}>
+          <div className={styles.popupContent}>
+            <h3>Enter your password to confirm suspension</h3>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className={styles.popupInput}
+              placeholder="Password"
+            />
+            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>} {/* Show error message */}
+            <div className={styles.popupActions}>
+              <button onClick={handleCancel} className={styles.noBtn}>
+                No
+              </button>
+              <button onClick={handleConfirmSuspend} className={styles.yesBtn}>
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

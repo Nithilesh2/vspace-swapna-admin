@@ -16,6 +16,7 @@ const Cars = () => {
           <SingleCar imgSrc='https://toppng.com/uploads/preview/maruti-suzuki-dzire-car-color-ford-crown-victoria-side-view-11562993605wszxnzlruh.png' imgAlt='Swift Dzire' imgName='Swift Dzire'/>
           <SingleCar imgSrc='https://www.carsized.com/resources/ford/ecosport/d/2017/sm_280111106_ford-ecosport-2017-side-view_4x.png' imgAlt='EcoSport' imgName='EcoSport'/>
           <SingleCar imgSrc='https://www.kia.com/content/dam/kwcms/gt/en/images/showroom/sonet-qy-22my-rhd/360/Exterior/clear_white/01.png' imgAlt='Kia Sonet' imgName='Kia Sonet'/>
+          <SingleCar imgSrc='https://images.carandbike.com/car-images/colors/maruti-suzuki/xl6/maruti-suzuki-xl6-opulent-red.png?v=1650862431' imgAlt='XL 6' imgName='XL 6'/>
         </div>
       </div>
     </>

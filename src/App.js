@@ -5,6 +5,8 @@ import Home from './components/Home'; // Import the OverviewCards component
 import EmployeeList from './components/Employee/EmployeeList/EmployeeList';
 import AssignOrder from './components/AssignOrder/AssignOrder';
 import AddEmployeeRole from './components/AddEmployeeRole/AddEmployeeRole';
+import AllCustomers from './components/AllCustomers/AllCustomers';
+import Payments from './components/Payments/Payments';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <Route path='/employeelist' element={<EmployeeList />} />
       <Route path='/assignorder' element={<AssignOrder />} />
       <Route path='/addemployeerole' element={<AddEmployeeRole />} />
+      <Route path='/allcustomers' element={<AllCustomers />} />
+      <Route path='/payments' element={<Payments />} />
     </Routes>
   );
 }

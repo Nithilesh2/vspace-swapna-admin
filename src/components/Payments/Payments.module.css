@@ -1,0 +1,57 @@
+.main {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  background-color: #3aafa9;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  height: 100dvh;
+}
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #000000;
+}
+.payments {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+  gap: 0.7rem;
+}
+.paymentMode {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.paymentMode label{
+  margin-bottom: 0;
+}
+.checkBox {
+  height: 20px;
+  width: 20px;
+}
+.checkBox:checked {
+  accent-color: #2B7A78;
+}
+.paymentModeHeader{
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: black;
+  cursor: default;
+}
+.hLine{
+  width: 95%;
+  height: 1px;
+  background-color: #E6E6E6;
+}

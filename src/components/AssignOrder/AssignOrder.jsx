@@ -17,6 +17,8 @@ const AssignOrder = () => {
     employeeName: "",
   })
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const calculateDuration = (pickup, drop) => {
     const pickupDate = new Date(pickup)
     const dropDate = new Date(drop)
@@ -49,8 +51,7 @@ const AssignOrder = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log("Order Assigned:", formData)
-    alert("Order assigned successfully!")
+    setIsModalOpen(true);
     setFormData({
       name: "",
       profession: "",
@@ -66,6 +67,10 @@ const AssignOrder = () => {
     })
   }
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const cars = [
     "Swift",
     "i20",
@@ -75,6 +80,7 @@ const AssignOrder = () => {
     "Swift Dzire",
     "EcoSport",
     "Kia Sonet",
+    "XL 6",
   ]
 
   return (
@@ -274,6 +280,18 @@ const AssignOrder = () => {
           </form>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
+            <h3>Order Assigned Successfully!</h3>
+            <p>Your order has been successfully assigned.</p>
+            <button className={styles.modalCloseButton} onClick={closeModal}>
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </>
   )
 }

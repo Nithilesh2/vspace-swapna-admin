@@ -71,11 +71,18 @@ const AddEmployeeRole = () => {
 
   const handleSubmitEmployee = (e) => {
     e.preventDefault()
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!")
-      return
+
+    if (password === confirmPassword) {
+      if ( password.length >= 8) {
+        alert("Employee assigned successfully!")
+      } else if (password.length < 8) {
+        alert("Password must be at least 8 characters")
+      }
     }
-    alert("Employee assigned successfully!")
+    else if(password !== confirmPassword) {
+      alert("Passwords do not match!")
+
+    }
   }
 
   return (
