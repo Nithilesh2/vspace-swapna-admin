@@ -80,7 +80,8 @@ const EmployeeList = () => {
     <>
       <div className={styles.main}>
         <Sidebar />
-        <div className={styles.employeeList}>
+        <div className={styles.container}>
+        <h2 className={styles.heading}>Employee List</h2>
           <div className={styles.employeeListContainer}>
             {employees.map((employee) => (
               <EmployeeCard

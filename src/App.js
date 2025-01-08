@@ -12,6 +12,8 @@ import PrivacyPolicy from './components/Essentials/PrivacyPolicy/PrivacyPolicy';
 import TermsAndConditions from './components/Essentials/TermsAndConditions/TermsAndConditions';
 import Faqs from './components/Essentials/FAQ\'S/Faqs';
 import AboutUs from './components/AboutUs/AboutUs';
+import AddCar from './components/EditCars/AddCar/AddCar';
+import EditCar from './components/EditCars/EditCar/EditCar';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
       <Route path='/essentials/termsandconditions' element={<TermsAndConditions />} />
       <Route path='/essentials/faqs' element={<Faqs />} />
       <Route path='/aboutus' element={<AboutUs />} />
+      <Route path='/editcars/addcar' element={<AddCar />} />
+      <Route path='/editcars/editcar' element={<EditCar />} />
       <Route path="/payments/:paymentType" element={<Payments />} />
       <Route path="/payments/:paymentType/:subMenuType" element={<Payments />} />
     </Routes>

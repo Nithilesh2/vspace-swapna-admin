@@ -21,6 +21,8 @@ import {
   FaList,
   FaBell,
   FaInfoCircle,
+  FaPlusCircle,
+  FaEdit,
 } from "react-icons/fa"
 import { FiBox, FiLogOut } from "react-icons/fi"
 import "./index.css"
@@ -32,13 +34,17 @@ const Header = () => {
     payments: false,
     employees: false,
     essentials: false,
+    editCars: false,
   })
 
   const handleMenuClick = (menu) => {
-    setActiveSubmenus((prevState) => ({
-      ...prevState,
-      [menu]: !prevState[menu],
-    }))
+    setActiveSubmenus((prevState) => {
+      const updatedState = {
+        ...prevState,
+        [menu]: !prevState[menu],
+      }
+      return updatedState
+    })
   }
 
   const navigate = useNavigate()
@@ -76,7 +82,10 @@ const Header = () => {
           <FaBell size={20} />
           {!toggleMenu && <h1>New Orders</h1>}
         </div>
-        <div className="menu-item" onClick={() => handleMenuClick("payments")}>
+        <div
+          className={`menu-item ${activeSubmenus.payments ? "active" : ""}`}
+          onClick={() => handleMenuClick("payments")}
+        >
           <FaMoneyBillAlt size={20} />
           {!toggleMenu && <h1>Payments</h1>}
         </div>
@@ -147,10 +156,29 @@ const Header = () => {
         )}
 
         {/* Other menu items */}
-        <div className="menu-item" onClick={() => navigate('/allcars')}>
+        <div className="menu-item" onClick={() => navigate("/allcars")}>
           <FaCarSide size={20} />
           {!toggleMenu && <h1>All Cars</h1>}
         </div>
+        <div
+          className={`menu-item ${activeSubmenus.editCars ? "active" : ""}`}
+          onClick={() => handleMenuClick("editCars")}
+        >
+          <FaCarSide size={20} />
+          {!toggleMenu && <h1>Edit Cars</h1>}
+        </div>
+        {activeSubmenus.editCars && (
+          <div className="submenu">
+            <div className="submenu-item" onClick={() => navigate('/editcars/addcar')}>
+              <FaPlusCircle  size={20} />
+              {!toggleMenu && <h1>Add a new Car</h1>}
+            </div>
+            <div className="submenu-item" onClick={() => navigate('/editcars/editcar')}>
+              <FaEdit  size={20} />
+              {!toggleMenu && <h1>Cars List</h1>}
+            </div>
+          </div>
+        )}
         <div className="menu-item" onClick={() => navigate("/allcustomers")}>
           <FaUserFriends size={20} />
           {!toggleMenu && <h1>All Customers</h1>}
@@ -167,7 +195,10 @@ const Header = () => {
           <FaTasks size={20} />
           {!toggleMenu && <h1>Assign Order</h1>}
         </div>
-        <div className="menu-item" onClick={() => handleMenuClick("employees")}>
+        <div
+          className={`menu-item ${activeSubmenus.employees ? "active" : ""}`}
+          onClick={() => handleMenuClick("employees")}
+        >
           <FaUsersCog size={20} />
           {!toggleMenu && <h1>Employees</h1>}
         </div>
@@ -195,7 +226,7 @@ const Header = () => {
         )}
 
         <div
-          className="menu-item"
+          className={`menu-item ${activeSubmenus.essentials ? "active" : ""}`}
           onClick={() => handleMenuClick("essentials")}
         >
           <FiBox size={20} />
@@ -203,28 +234,37 @@ const Header = () => {
         </div>
         {activeSubmenus.essentials && (
           <div className="submenu">
-            <div className="submenu-item" onClick={() => navigate('/essentials/privacypolicy')}>
+            <div
+              className="submenu-item"
+              onClick={() => navigate("/essentials/privacypolicy")}
+            >
               <FaQuestionCircle size={20} />
               {!toggleMenu && <h1>Privacy Policy</h1>}
             </div>
-            <div className="submenu-item" onClick={() => navigate('/essentials/termsandconditions')}>
-              <FaBook  size={20} />
+            <div
+              className="submenu-item"
+              onClick={() => navigate("/essentials/termsandconditions")}
+            >
+              <FaBook size={20} />
               {!toggleMenu && <h1>Terms and Conditions</h1>}
             </div>
-            <div className="submenu-item" onClick={() => navigate('/essentials/faqs')}>
-              <FaList  size={20} />
+            <div
+              className="submenu-item"
+              onClick={() => navigate("/essentials/faqs")}
+            >
+              <FaList size={20} />
               {!toggleMenu && <h1>FAQ's</h1>}
             </div>
           </div>
         )}
-        <div className="menu-item" onClick={() => navigate('/aboutus')}>
-          <FaInfoCircle  size={20} />
+        <div className="menu-item" onClick={() => navigate("/aboutus")}>
+          <FaInfoCircle size={20} />
           {!toggleMenu && <h1>About Us</h1>}
         </div>
 
         {/* Sign Out button */}
-        <div className="signOutBtn" >
-          <button type="button" onClick={() => navigate('/')}>
+        <div className="signOutBtn">
+          <button type="button" onClick={() => navigate("/")}>
             <FiLogOut size={20} />
             {!toggleMenu && <>Sign Out</>}
           </button>

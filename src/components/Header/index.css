@@ -80,6 +80,11 @@
   font-weight: normal;
 }
 
+.menu-item.active {
+  background-color: #3a506b;
+  border-radius: 8px;
+}
+
 .submenu {
   display: flex;
   flex-direction: column;
