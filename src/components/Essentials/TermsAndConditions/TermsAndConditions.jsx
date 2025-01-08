@@ -88,7 +88,7 @@ The Renter is liable for traffic violations.`
           )}
           {isEditing && (
             <button onClick={handleSubmitClick} className={styles.submitButton}>
-              Submit
+              Publish
             </button>
           )}
         </div>

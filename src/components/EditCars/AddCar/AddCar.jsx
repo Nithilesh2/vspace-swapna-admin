@@ -190,7 +190,7 @@ const AddCar = () => {
                 className={styles.submitBtn}
                 onClick={handleSubmit}
               >
-                Submit
+                Publish
               </button>
             </div>
           </form>

@@ -1,15 +1,45 @@
-import React, { useState } from "react";
-import { FaUser, FaCar, FaSuitcaseRolling } from "react-icons/fa"; // Importing required icons
-import styles from "./EditCar.module.css";
-import Statusbar from "../../Header/index";
+import React, { useState } from "react"
+import { FaUser, FaCar, FaSuitcaseRolling } from "react-icons/fa"
+import styles from "./EditCar.module.css"
+import Statusbar from "../../Header/index"
 
-// Modal Component
 const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
+  const [newImage, setNewImage] = useState(car.image)
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setNewImage(reader.result)
+        onChange({ target: { name: "image", value: reader.result } })
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modal}>
         <h3>Edit Car Details</h3>
         <form>
+          <div className={styles.imageUploadSection}>
+            <img
+              src={newImage}
+              alt="Car Preview"
+              className={styles.imagePreview}
+            />
+            <label htmlFor="imageUpload" className={styles.uploadLabel}>
+              Change Image
+            </label>
+            <input
+              id="imageUpload"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className={styles.imageInput}
+            />
+          </div>
           <input
             type="text"
             name="name"
@@ -51,13 +81,48 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
             Cancel
           </button>
           <button onClick={onSave} className={styles.saveButton}>
-            Save Changes
+            Publish
           </button>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
+
+const ConfirmPasswordModal = ({ onConfirm, onCancel, errorMessage }) => {
+  const [password, setPassword] = useState("")
+
+  const handleChange = (e) => {
+    setPassword(e.target.value)
+  }
+
+  const handleSubmit = () => {
+    onConfirm(password)
+  }
+
+  return (
+    <div className={styles.modalOverlay}>
+      <div className={styles.modal}>
+        <h3>Admin Password Required</h3>
+        <input
+          type="password"
+          value={password}
+          onChange={handleChange}
+          placeholder="Enter Admin Password"
+        />
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+        <div className={styles.modalActions}>
+          <button onClick={onCancel} className={styles.cancelButton}>
+            Cancel
+          </button>
+          <button onClick={handleSubmit} className={styles.confirmButton}>
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 const CarList = () => {
   const [cars, setCars] = useState([
@@ -73,8 +138,8 @@ const CarList = () => {
       pricing: [
         "24HRS (300 KM) - 1500 Rs",
         "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs"
-      ]
+        "12HRS (150 KM) - 1000 Rs",
+      ],
     },
     {
       name: "Ritz",
@@ -87,8 +152,8 @@ const CarList = () => {
       pricing: [
         "24HRS (300 KM) - 1500 Rs",
         "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs"
-      ]
+        "12HRS (150 KM) - 1000 Rs",
+      ],
     },
     {
       name: "Ford Figo",
@@ -101,8 +166,8 @@ const CarList = () => {
       pricing: [
         "24HRS (300 KM) - 1500 Rs",
         "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs"
-      ]
+        "12HRS (150 KM) - 1000 Rs",
+      ],
     },
     {
       name: "Ford Aspire",
@@ -115,8 +180,8 @@ const CarList = () => {
       pricing: [
         "24HRS (300 KM) - 1500 Rs",
         "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs"
-      ]
+        "12HRS (150 KM) - 1000 Rs",
+      ],
     },
     {
       name: "Swift Dzire",
@@ -129,8 +194,8 @@ const CarList = () => {
       pricing: [
         "24HRS (300 KM) - 1500 Rs",
         "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs"
-      ]
+        "12HRS (150 KM) - 1000 Rs",
+      ],
     },
     {
       name: "Ecosport Diesel",
@@ -143,8 +208,8 @@ const CarList = () => {
       pricing: [
         "24HRS (300 KM) - 1500 Rs",
         "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs"
-      ]
+        "12HRS (150 KM) - 1000 Rs",
+      ],
     },
     {
       name: "Kia Sonet Diesel",
@@ -157,8 +222,8 @@ const CarList = () => {
       pricing: [
         "24HRS (300 KM) - 1500 Rs",
         "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs"
-      ]
+        "12HRS (150 KM) - 1000 Rs",
+      ],
     },
     {
       name: "Ertiga & XL6",
@@ -172,8 +237,8 @@ const CarList = () => {
       pricing: [
         "24HRS (300 KM) - 1500 Rs",
         "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs"
-      ]
+        "12HRS (150 KM) - 1000 Rs",
+      ],
     },
     {
       name: "Swift",
@@ -182,41 +247,73 @@ const CarList = () => {
       bags: 2,
       description:
         "A sporty, fuel-efficient hatchback known for its reliability and agile city performance. Offers good cabin space and a sleek design.",
-      image: 'https://d2m3nfprmhqjvd.cloudfront.net/blog/20220228140536/Spinny-Assured-Maruti-Suzuki-Swift.jpg',
+      image:
+        "https://d2m3nfprmhqjvd.cloudfront.net/blog/20220228140536/Spinny-Assured-Maruti-Suzuki-Swift.jpg",
       pricing: [
-        '24HRS (300 KM) - 1500 Rs',  
-        '12HRS (300 KM) - 1300 Rs' , 
-        '12HRS (150 KM) - 1000 Rs'  ,
-      ]
-    }
-  ]);
+        "24HRS (300 KM) - 1500 Rs",
+        "12HRS (300 KM) - 1300 Rs",
+        "12HRS (150 KM) - 1000 Rs",
+      ],
+    },
+  ])
 
-  const [editMode, setEditMode] = useState(null);
-  const [tempCar, setTempCar] = useState(null);
+  const [editMode, setEditMode] = useState(null)
+  const [tempCar, setTempCar] = useState(null)
+  const [actionVisibleIndex, setActionVisibleIndex] = useState(null)
+  const [passwordModalVisible, setPasswordModalVisible] = useState(false)
+  const [removalIndex, setRemovalIndex] = useState(null)
+  const [errorMessage, setErrorMessage] = useState("")
+
+  const correctAdminPassword = "admin123"
 
   const handleEditClick = (index) => {
-    setEditMode(index);
-    setTempCar({ ...cars[index] });
-  };
+    setEditMode(index)
+    setTempCar({ ...cars[index] })
+    setActionVisibleIndex(null)
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setTempCar((prev) => ({
       ...prev,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handleSaveChanges = () => {
-    const updatedCars = [...cars];
-    updatedCars[editMode] = tempCar;
-    setCars(updatedCars);
-    setEditMode(null); 
-  };
+    const updatedCars = [...cars]
+    updatedCars[editMode] = tempCar
+    setCars(updatedCars)
+    setEditMode(null)
+  }
 
   const handleCancelEdit = () => {
-    setEditMode(null);
-  };
+    setEditMode(null)
+  }
+
+  const handleRemoveClick = (index) => {
+    setRemovalIndex(index)
+    setPasswordModalVisible(true)
+  }
+
+  const handlePasswordConfirm = (password) => {
+    if (password === correctAdminPassword) {
+      const updatedCars = cars.filter(
+        (_, carIndex) => carIndex !== removalIndex
+      )
+      setCars(updatedCars)
+      setPasswordModalVisible(false)
+      setActionVisibleIndex(null)
+      setErrorMessage("")
+    } else {
+      setErrorMessage("Incorrect password. Please try again.")
+    }
+  }
+
+  const handlePasswordCancel = () => {
+    setPasswordModalVisible(false)
+    setErrorMessage("")
+  }
 
   return (
     <>
@@ -255,14 +352,33 @@ const CarList = () => {
                   ))}
                 </div>
 
-                <div className={styles.editButtonBox}>
-                  <button
-                    type="button"
-                    className={styles.editBtn}
-                    onClick={() => handleEditClick(index)}
-                  >
-                    Edit
-                  </button>
+                <div className={styles.actionButtonBox}>
+                  {actionVisibleIndex === index ? (
+                    <>
+                      <button
+                        type="button"
+                        className={styles.removeBtn}
+                        onClick={() => handleRemoveClick(index)}
+                      >
+                        Remove
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.editBtn}
+                        onClick={() => handleEditClick(index)}
+                      >
+                        Edit
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      type="button"
+                      className={styles.actionBtn}
+                      onClick={() => setActionVisibleIndex(index)}
+                    >
+                      Action
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
@@ -278,8 +394,16 @@ const CarList = () => {
           onChange={handleInputChange}
         />
       )}
-    </>
-  );
-};
 
-export default CarList;
+      {passwordModalVisible && (
+        <ConfirmPasswordModal
+          onConfirm={handlePasswordConfirm}
+          onCancel={handlePasswordCancel}
+          errorMessage={errorMessage}
+        />
+      )}
+    </>
+  )
+}
+
+export default CarList

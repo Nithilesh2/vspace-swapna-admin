@@ -117,7 +117,7 @@ Email: swapnaselfdrivecars@gmail.com`
           )}
           {isEditing && (
             <button onClick={handleSubmitClick} className={styles.submitButton}>
-              Submit
+              Publish
             </button>
           )}
         </div>

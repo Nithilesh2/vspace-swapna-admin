@@ -14,6 +14,7 @@ import Faqs from './components/Essentials/FAQ\'S/Faqs';
 import AboutUs from './components/AboutUs/AboutUs';
 import AddCar from './components/EditCars/AddCar/AddCar';
 import EditCar from './components/EditCars/EditCar/EditCar';
+import ContactUs from './components/ContactUs/ContactUs';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path='/essentials/termsandconditions' element={<TermsAndConditions />} />
       <Route path='/essentials/faqs' element={<Faqs />} />
       <Route path='/aboutus' element={<AboutUs />} />
+      <Route path='/contactus' element={<ContactUs />} />
       <Route path='/editcars/addcar' element={<AddCar />} />
       <Route path='/editcars/editcar' element={<EditCar />} />
       <Route path="/payments/:paymentType" element={<Payments />} />

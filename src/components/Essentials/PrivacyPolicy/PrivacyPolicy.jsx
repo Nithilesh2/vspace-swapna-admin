@@ -114,7 +114,7 @@ By using our website, you consent to this privacy policy.`
           )}
           {isEditing && (
             <button onClick={handleSubmitClick} className={styles.submitButton}>
-              Submit
+              Publish
             </button>
           )}
         </div>

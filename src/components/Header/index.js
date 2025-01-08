@@ -23,6 +23,7 @@ import {
   FaInfoCircle,
   FaPlusCircle,
   FaEdit,
+  FaEnvelope,
 } from "react-icons/fa"
 import { FiBox, FiLogOut } from "react-icons/fi"
 import "./index.css"
@@ -70,6 +71,7 @@ const Header = () => {
           )}
         </div>
         <img
+        onClick={() => navigate('/home')}
           src="https://res.cloudinary.com/dagkvnqd9/image/upload/v1726917662/WhatsApp_Image_2024-09-13_at_9.33.52_PM-removebg_oalbnc.png"
           alt="logo"
           className={`swapna-logo ${toggleMenu ? "hidden" : ""}`}
@@ -260,6 +262,10 @@ const Header = () => {
         <div className="menu-item" onClick={() => navigate("/aboutus")}>
           <FaInfoCircle size={20} />
           {!toggleMenu && <h1>About Us</h1>}
+        </div>
+        <div className="menu-item" onClick={() => navigate("/contactus")}>
+          <FaEnvelope  size={20} />
+          {!toggleMenu && <h1>Contact Us</h1>}
         </div>
 
         {/* Sign Out button */}

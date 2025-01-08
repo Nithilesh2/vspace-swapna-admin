@@ -141,7 +141,7 @@ const EmployeeCard = ({
             </button>
             {isEditing ? (
               <button className={styles.saveBtn} onClick={handleSaveClick}>
-                Save
+                Publish
               </button>
             ) : (
               <button className={styles.editBtn} onClick={handleEditClick}>
