@@ -20,6 +20,7 @@ import {
   FaUserPlus,
   FaList,
   FaBell,
+  FaInfoCircle,
 } from "react-icons/fa"
 import { FiBox, FiLogOut } from "react-icons/fi"
 import "./index.css"
@@ -202,20 +203,24 @@ const Header = () => {
         </div>
         {activeSubmenus.essentials && (
           <div className="submenu">
-            <div className="submenu-item">
+            <div className="submenu-item" onClick={() => navigate('/essentials/privacypolicy')}>
               <FaQuestionCircle size={20} />
               {!toggleMenu && <h1>Privacy Policy</h1>}
             </div>
-            <div className="submenu-item">
+            <div className="submenu-item" onClick={() => navigate('/essentials/termsandconditions')}>
               <FaBook  size={20} />
               {!toggleMenu && <h1>Terms and Conditions</h1>}
             </div>
-            <div className="submenu-item">
+            <div className="submenu-item" onClick={() => navigate('/essentials/faqs')}>
               <FaList  size={20} />
               {!toggleMenu && <h1>FAQ's</h1>}
             </div>
           </div>
         )}
+        <div className="menu-item" onClick={() => navigate('/aboutus')}>
+          <FaInfoCircle  size={20} />
+          {!toggleMenu && <h1>About Us</h1>}
+        </div>
 
         {/* Sign Out button */}
         <div className="signOutBtn" >

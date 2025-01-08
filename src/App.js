@@ -8,6 +8,10 @@ import AddEmployeeRole from './components/AddEmployeeRole/AddEmployeeRole';
 import AllCustomers from './components/AllCustomers/AllCustomers';
 import Payments from './components/Payments/Payments';
 import Cars from './components/AllCars/Cars';
+import PrivacyPolicy from './components/Essentials/PrivacyPolicy/PrivacyPolicy';
+import TermsAndConditions from './components/Essentials/TermsAndConditions/TermsAndConditions';
+import Faqs from './components/Essentials/FAQ\'S/Faqs';
+import AboutUs from './components/AboutUs/AboutUs';
 
 function App() {
   return (
@@ -20,6 +24,10 @@ function App() {
       <Route path='/allcustomers' element={<AllCustomers />} />
       <Route path='/payments' element={<Payments />} />
       <Route path='/allcars' element={<Cars />} />
+      <Route path='/essentials/privacypolicy' element={<PrivacyPolicy />} />
+      <Route path='/essentials/termsandconditions' element={<TermsAndConditions />} />
+      <Route path='/essentials/faqs' element={<Faqs />} />
+      <Route path='/aboutus' element={<AboutUs />} />
       <Route path="/payments/:paymentType" element={<Payments />} />
       <Route path="/payments/:paymentType/:subMenuType" element={<Payments />} />
     </Routes>
