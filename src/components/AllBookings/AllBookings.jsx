@@ -1,7 +1,11 @@
 import React, { useState } from "react"
 import styles from "./AllBookings.module.css"
 import StatusBar from "../Header/index"
-import { FaEllipsisV } from "react-icons/fa"
+import { FaDownload, FaEllipsisV, FaFileExcel, FaFilePdf } from "react-icons/fa"
+import { jsPDF } from "jspdf"
+import "jspdf-autotable"
+import * as XLSX from "xlsx"
+import { saveAs } from "file-saver"
 
 const AllBookings = () => {
   const [allBookingsData] = useState([
@@ -87,6 +91,60 @@ const AllBookings = () => {
     },
   ])
 
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
+
+  const downloadPDF = () => {
+    const doc = new jsPDF()
+
+    doc.setFontSize(12)
+
+    const columns = [
+      "Booking ID",
+      "Customer Name",
+      "Car Booked",
+      "Booked From",
+      "Booked To",
+      "Total Cost",
+    ]
+
+    const rows = allBookingsData.map((booking) => [
+      booking.bookingId,
+      booking.customerName,
+      booking.carBooked,
+      booking.bookedFrom,
+      booking.bookedTo,
+      booking.totalCost,
+    ])
+
+    doc.autoTable({
+      head: [columns],
+      body: rows,
+      margin: { top: 30 },
+      theme: "grid",
+    })
+
+    doc.save("all_bookings.pdf")
+    setIsDownloadModalOpen(false)
+  }
+
+  const downloadExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(allBookingsData)
+    const workbook = XLSX.utils.book_new()
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Bookings")
+    const excelFile = XLSX.write(workbook, { bookType: "xlsx", type: "array" })
+
+    saveAs(new Blob([excelFile]), "all_bookings.xlsx")
+    setIsDownloadModalOpen(false)
+  }
+
+  const openDownloadModal = () => {
+    setIsDownloadModalOpen(true)
+  }
+
+  const closeDownloadModal = () => {
+    setIsDownloadModalOpen(false)
+  }
+
   return (
     <>
       <div className={styles.main}>
@@ -95,10 +153,47 @@ const AllBookings = () => {
           <h2 className={styles.heading}>All Bookings</h2>
           <div className={styles.allBookingsBox}>
             <div className={styles.filterBox}>
+              <div className={styles.downloadBox}>
+                <button
+                  onClick={openDownloadModal}
+                  className={styles.downloadButton}
+                >
+                  <FaDownload size={16} />
+                </button>
+              </div>
+
+              {isDownloadModalOpen && (
+                <div className={styles.downloadModal}>
+                  <div className={styles.modalContent}>
+                    <p>Choose a format to download:</p>
+                    <button
+                      onClick={downloadPDF}
+                      className={styles.modalButton}
+                    >
+                      <FaFilePdf size={20} /> Download PDF
+                    </button>
+                    <button
+                      onClick={downloadExcel}
+                      className={styles.modalButton}
+                    >
+                      <FaFileExcel size={20} />
+                      Download Excel
+                    </button>
+                    <button
+                      onClick={closeDownloadModal}
+                      className={styles.modalButton}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+
               <input type="date" name="from" className={styles.fromAndTo} />
               <label className={styles.to}>To</label>
               <input type="date" name="from" className={styles.fromAndTo} />
             </div>
+
             <div className={styles.allBookings}>
               <div className={styles.allBookingsHeading}>
                 <div className={styles.bookingHeadings}>Booking ID</div>
