@@ -153,7 +153,7 @@ const Header = () => {
           <FaHome size={20} />
           {!toggleMenu && <h1>Dashboard</h1>}
         </div>
-        <div className="menu-item">
+        <div className="menu-item" onClick={() => navigate('/neworders')}>
           <FaBell size={20} />
           {!toggleMenu && <h1>New Orders</h1>}
         </div>

@@ -18,6 +18,7 @@ import ContactUs from './components/ContactUs/ContactUs';
 import AllBookings from './components/AllBookings/AllBookings';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import Profile from './components/Profile/Profile';
+import NewOrders from './components/NewOrders/NewOrders';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       <Route path='/essentials/faqs' element={<Faqs />} />
       <Route path='/aboutus' element={<AboutUs />} />
       <Route path='/contactus' element={<ContactUs />} />
+      <Route path='/neworders' element={<NewOrders />} />
       <Route path='/profile' element={<Profile />} />
       <Route path='/editcars/addcar' element={<AddCar />} />
       <Route path='/editcars/editcar' element={<EditCar />} />
