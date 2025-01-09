@@ -92,52 +92,6 @@ const Header = () => {
             />
           )}
         </div>
-        {/* <div
-          className="imgBox"
-          style={{ display: "flex", position: "relative" }}
-        >
-          <img
-            onClick={() => navigate("/home")}
-            src={logoImage}
-            alt="logo"
-            className={`swapna-logo ${toggleMenu ? "hidden" : ""}`}
-            style={{height: '200px', width: '200px', objectFit: 'cover', borderRadius: '10px'}}
-          />
-          <div
-            style={{
-              height: 40,
-              width: 40,
-              border: "2px solid black",
-              position: "absolute",
-              right: 30,
-              borderRadius: 30,
-              backgroundColor: "black",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-            }}
-            onClick={handleEditClick}
-          >
-            <FaPen size={20} />
-          </div>
-            {isEditing && (
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                style={{
-                  position: "absolute",
-                  top: "-10px",
-                  left: "30px",
-                  cursor: "pointer",
-                  backgroundColor: 'white',
-                  height: '150px',
-                  width: '150px',
-                }}
-              />
-            )}
-        </div> */}
         <div
           className="imgBox"
           style={{ display: "flex", position: "relative" }}
@@ -158,8 +112,8 @@ const Header = () => {
               />
               <div
                 style={{
-                  height: 40,
-                  width: 40,
+                  height: 34,
+                  width: 34,
                   border: "2px solid black",
                   position: "absolute",
                   right: 30,
@@ -172,7 +126,7 @@ const Header = () => {
                 }}
                 onClick={handleEditClick}
               >
-                <FaPen size={20} />
+                <FaPen size={16} />
               </div>
               {isEditing && (
                 <input
