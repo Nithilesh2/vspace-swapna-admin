@@ -15,6 +15,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import AddCar from './components/EditCars/AddCar/AddCar';
 import EditCar from './components/EditCars/EditCar/EditCar';
 import ContactUs from './components/ContactUs/ContactUs';
+import AllBookings from './components/AllBookings/AllBookings';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       <Route path='/assignorder' element={<AssignOrder />} />
       <Route path='/addemployeerole' element={<AddEmployeeRole />} />
       <Route path='/allcustomers' element={<AllCustomers />} />
+      <Route path='/allbookings' element={<AllBookings />} />
       <Route path='/payments' element={<Payments />} />
       <Route path='/allcars' element={<Cars />} />
       <Route path='/essentials/privacypolicy' element={<PrivacyPolicy />} />

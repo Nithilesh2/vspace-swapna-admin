@@ -92,7 +92,7 @@ const Header = () => {
             />
           )}
         </div>
-        <div
+        {/* <div
           className="imgBox"
           style={{ display: "flex", position: "relative" }}
         >
@@ -137,6 +137,61 @@ const Header = () => {
                 }}
               />
             )}
+        </div> */}
+        <div
+          className="imgBox"
+          style={{ display: "flex", position: "relative" }}
+        >
+          {!toggleMenu && (
+            <>
+              <img
+                onClick={() => navigate("/home")}
+                src={logoImage}
+                alt="logo"
+                className="swapna-logo"
+                style={{
+                  height: "200px",
+                  width: "200px",
+                  objectFit: "cover",
+                  borderRadius: "10px",
+                }}
+              />
+              <div
+                style={{
+                  height: 40,
+                  width: 40,
+                  border: "2px solid black",
+                  position: "absolute",
+                  right: 30,
+                  borderRadius: 30,
+                  backgroundColor: "black",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+                onClick={handleEditClick}
+              >
+                <FaPen size={20} />
+              </div>
+              {isEditing && (
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  style={{
+                    position: "absolute",
+                    top: "-10px",
+                    left: "30px",
+                    cursor: "pointer",
+                    backgroundColor: "white",
+                    height: "150px",
+                    width: "150px",
+                  }}
+                />
+              )}
+            </>
+          )}
         </div>
 
         <div className="menu-item" onClick={() => navigate("/home")}>
@@ -160,7 +215,6 @@ const Header = () => {
         </div>
         {activeSubmenus.payments && (
           <div className="submenu">
-            {/* Cash Based Payments */}
             <div
               className="submenu-item"
               onClick={() => navigateToPaymentPage("cashBased", "cash")}
@@ -169,7 +223,6 @@ const Header = () => {
               {!toggleMenu && <h1>Cash Based Payments</h1>}
             </div>
 
-            {/* Card Based Payments */}
             <div
               className="submenu-item"
               onClick={() => navigateToPaymentPage("cardBased", "creditCards")}
@@ -178,7 +231,6 @@ const Header = () => {
               {!toggleMenu && <h1>Card Based Payments</h1>}
             </div>
 
-            {/* Electronic Payments */}
             <div
               className="submenu-item"
               onClick={() =>
@@ -189,7 +241,6 @@ const Header = () => {
               {!toggleMenu && <h1>Electronic Payments</h1>}
             </div>
 
-            {/* Mobile Payments */}
             <div
               className="submenu-item"
               onClick={() =>
@@ -200,7 +251,6 @@ const Header = () => {
               {!toggleMenu && <h1>Mobile Payments</h1>}
             </div>
 
-            {/* Point of Sale Financing */}
             <div
               className="submenu-item"
               onClick={() =>
@@ -211,7 +261,6 @@ const Header = () => {
               {!toggleMenu && <h1>Point of Sale Financing</h1>}
             </div>
 
-            {/* Others */}
             <div
               className="submenu-item"
               onClick={() =>
@@ -224,7 +273,6 @@ const Header = () => {
           </div>
         )}
 
-        {/* Other menu items */}
         <div className="menu-item" onClick={() => navigate("/allcars")}>
           <FaCarSide size={20} />
           {!toggleMenu && <h1>All Cars</h1>}
@@ -262,7 +310,7 @@ const Header = () => {
           <FaUserFriends size={20} />
           {!toggleMenu && <h1>All Customers</h1>}
         </div>
-        <div className="menu-item">
+        <div className="menu-item" onClick={() => navigate("/allbookings")}>
           <FaBook size={20} />
           {!toggleMenu && <h1>All Bookings</h1>}
         </div>
