@@ -24,6 +24,7 @@ import {
   FaPlusCircle,
   FaEdit,
   FaEnvelope,
+  FaPen,
 } from "react-icons/fa"
 import { FiBox, FiLogOut } from "react-icons/fi"
 import "./index.css"
@@ -38,6 +39,11 @@ const Header = () => {
     editCars: false,
   })
 
+  const [logoImage, setLogoImage] = useState(
+    "https://res.cloudinary.com/dagkvnqd9/image/upload/v1726917662/WhatsApp_Image_2024-09-13_at_9.33.52_PM-removebg_oalbnc.png"
+  )
+  const [isEditing, setIsEditing] = useState(false)
+
   const handleMenuClick = (menu) => {
     setActiveSubmenus((prevState) => {
       const updatedState = {
@@ -46,6 +52,22 @@ const Header = () => {
       }
       return updatedState
     })
+  }
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setLogoImage(reader.result)
+        setIsEditing(false)
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleEditClick = () => {
+    setIsEditing(true)
   }
 
   const navigate = useNavigate()
@@ -70,12 +92,53 @@ const Header = () => {
             />
           )}
         </div>
-        <img
-        onClick={() => navigate('/home')}
-          src="https://res.cloudinary.com/dagkvnqd9/image/upload/v1726917662/WhatsApp_Image_2024-09-13_at_9.33.52_PM-removebg_oalbnc.png"
-          alt="logo"
-          className={`swapna-logo ${toggleMenu ? "hidden" : ""}`}
-        />
+        <div
+          className="imgBox"
+          style={{ display: "flex", position: "relative" }}
+        >
+          <img
+            onClick={() => navigate("/home")}
+            src={logoImage}
+            alt="logo"
+            className={`swapna-logo ${toggleMenu ? "hidden" : ""}`}
+            style={{height: '200px', width: '200px', objectFit: 'cover', borderRadius: '10px'}}
+          />
+          <div
+            style={{
+              height: 40,
+              width: 40,
+              border: "2px solid black",
+              position: "absolute",
+              right: 30,
+              borderRadius: 30,
+              backgroundColor: "black",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+            onClick={handleEditClick}
+          >
+            <FaPen size={20} />
+          </div>
+            {isEditing && (
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                style={{
+                  position: "absolute",
+                  top: "-10px",
+                  left: "30px",
+                  cursor: "pointer",
+                  backgroundColor: 'white',
+                  height: '150px',
+                  width: '150px',
+                }}
+              />
+            )}
+        </div>
+
         <div className="menu-item" onClick={() => navigate("/home")}>
           <FaHome size={20} />
           {!toggleMenu && <h1>Dashboard</h1>}
@@ -89,7 +152,11 @@ const Header = () => {
           onClick={() => handleMenuClick("payments")}
         >
           <FaMoneyBillAlt size={20} />
-          {!toggleMenu && <h1>Payments</h1>}
+          {!toggleMenu && (
+            <h1>
+              <b>Payments</b>
+            </h1>
+          )}
         </div>
         {activeSubmenus.payments && (
           <div className="submenu">
@@ -167,16 +234,26 @@ const Header = () => {
           onClick={() => handleMenuClick("editCars")}
         >
           <FaCarSide size={20} />
-          {!toggleMenu && <h1>Edit Cars</h1>}
+          {!toggleMenu && (
+            <h1>
+              <b>Edit Cars</b>
+            </h1>
+          )}
         </div>
         {activeSubmenus.editCars && (
           <div className="submenu">
-            <div className="submenu-item" onClick={() => navigate('/editcars/addcar')}>
-              <FaPlusCircle  size={20} />
+            <div
+              className="submenu-item"
+              onClick={() => navigate("/editcars/addcar")}
+            >
+              <FaPlusCircle size={20} />
               {!toggleMenu && <h1>Add a new Car</h1>}
             </div>
-            <div className="submenu-item" onClick={() => navigate('/editcars/editcar')}>
-              <FaEdit  size={20} />
+            <div
+              className="submenu-item"
+              onClick={() => navigate("/editcars/editcar")}
+            >
+              <FaEdit size={20} />
               {!toggleMenu && <h1>Cars List</h1>}
             </div>
           </div>
@@ -202,7 +279,11 @@ const Header = () => {
           onClick={() => handleMenuClick("employees")}
         >
           <FaUsersCog size={20} />
-          {!toggleMenu && <h1>Employees</h1>}
+          {!toggleMenu && (
+            <h1>
+              <b>Employees</b>
+            </h1>
+          )}
         </div>
         {activeSubmenus.employees && (
           <div className="submenu">
@@ -232,7 +313,11 @@ const Header = () => {
           onClick={() => handleMenuClick("essentials")}
         >
           <FiBox size={20} />
-          {!toggleMenu && <h1>Essentials</h1>}
+          {!toggleMenu && (
+            <h1>
+              <b>Essentials</b>
+            </h1>
+          )}
         </div>
         {activeSubmenus.essentials && (
           <div className="submenu">
@@ -264,7 +349,7 @@ const Header = () => {
           {!toggleMenu && <h1>About Us</h1>}
         </div>
         <div className="menu-item" onClick={() => navigate("/contactus")}>
-          <FaEnvelope  size={20} />
+          <FaEnvelope size={20} />
           {!toggleMenu && <h1>Contact Us</h1>}
         </div>
 
