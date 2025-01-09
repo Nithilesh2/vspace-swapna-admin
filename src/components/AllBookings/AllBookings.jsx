@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import styles from "./AllBookings.module.css"
 import StatusBar from "../Header/index"
-import { FaDownload, FaEllipsisV, FaFileExcel, FaFilePdf } from "react-icons/fa"
+import { FaDownload, FaEllipsisV, FaFileExcel, FaFileInvoice, FaFilePdf, FaReceipt } from "react-icons/fa"
 import { jsPDF } from "jspdf"
 import "jspdf-autotable"
 import * as XLSX from "xlsx"
 import { saveAs } from "file-saver"
+import { useNavigate } from "react-router-dom"
 
 const AllBookings = () => {
   const [allBookingsData] = useState([
@@ -145,6 +146,13 @@ const AllBookings = () => {
     setIsDownloadModalOpen(false)
   }
 
+  const [showActionId, setShowActionId] = useState(null)
+  const navigate = useNavigate()
+
+  const toggleActionMenu = (id) => {
+    setShowActionId((prevId) => (prevId === id ? null : id))
+  }
+
   return (
     <>
       <div className={styles.main}>
@@ -223,8 +231,21 @@ const AllBookings = () => {
                     <div className={styles.bookingData}>
                       {booking.totalCost}
                     </div>
-                    <div className={styles.bookingData}>
-                      <FaEllipsisV size={20} />
+                    <div className={styles.bookingData} id={styles.action}>
+                      <FaEllipsisV
+                        size={20}
+                        onClick={() => toggleActionMenu(booking.bookingId)}
+                      />
+                      {showActionId === booking.bookingId && (
+                        <>
+                          <div className={styles.actionBox}>
+                            <div className={styles.bookingId} style={{textDecoration: 'underline'}}>Booking Id: {booking.bookingId}</div>
+                            <div className={styles.bill}>
+                              <FaReceipt size={20} />Bill Invoice
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 ))}

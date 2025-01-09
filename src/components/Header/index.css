@@ -122,11 +122,12 @@
   height: 40px;
   width: 150px;
   border-radius: 30px;
-  background-color: rgb(251, 23, 23);
+  background-color: rgba(220, 36, 36, 0.904);
   color: white;
   font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-bottom: 1rem;
 }

@@ -119,7 +119,7 @@ p {
   background-color: #3aafa9;
   flex-wrap: wrap; /* Ensures responsiveness */
   overflow-y: auto; /* Allow the main container to scroll vertically */
-  height: 100%; /* Full height of the viewport */
+  height: auto; /* Full height of the viewport */
 }
 
 .overview {

@@ -2,6 +2,11 @@ import React, { useState } from "react"
 import EmployeeCard from "./EmployeeCard "
 import styles from "./EmployeeList.module.css"
 import Sidebar from "../../Header/index"
+import { jsPDF } from "jspdf"
+import "jspdf-autotable"
+import * as XLSX from "xlsx"
+import { saveAs } from "file-saver"
+import { FaDownload, FaFileExcel, FaFilePdf } from "react-icons/fa";
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([
@@ -75,6 +80,55 @@ const EmployeeList = () => {
   const handleCancel = () => {
     setShowPopup(false)
   }
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
+  
+    const downloadPDF = () => {
+      const doc = new jsPDF()
+  
+      doc.setFontSize(12)
+  
+      const columns = [
+        "Employee ID",
+        "Employee Name",
+        "Employee Email",
+        "Employee Designation",
+      ]
+  
+      const rows = employees.map((booking) => [
+        booking.id,
+        booking.name,
+        booking.email,
+        booking.designation,
+      ])
+  
+      doc.autoTable({
+        head: [columns],
+        body: rows,
+        margin: { top: 30 },
+        theme: "grid",
+      })
+  
+      doc.save("all_employees.pdf")
+      setIsDownloadModalOpen(false)
+    }
+  
+    const downloadExcel = () => {
+      const worksheet = XLSX.utils.json_to_sheet(employees)
+      const workbook = XLSX.utils.book_new()
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Bookings")
+      const excelFile = XLSX.write(workbook, { bookType: "xlsx", type: "array" })
+  
+      saveAs(new Blob([excelFile]), "all_employees.xlsx")
+      setIsDownloadModalOpen(false)
+    }
+  
+    const openDownloadModal = () => {
+      setIsDownloadModalOpen(true)
+    }
+  
+    const closeDownloadModal = () => {
+      setIsDownloadModalOpen(false)
+    }
 
   return (
     <>
@@ -82,6 +136,48 @@ const EmployeeList = () => {
         <Sidebar />
         <div className={styles.container}>
         <h2 className={styles.heading}>Employee List</h2>
+        <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "flex-end",
+              marginRight: "50px",
+              marginBottom: "30px",
+            }}
+          >
+            <div className={styles.downloadBox}>
+              <button
+                onClick={openDownloadModal}
+                className={styles.downloadButton}
+              >
+                <FaDownload size={16} />
+              </button>
+            </div>
+
+            {isDownloadModalOpen && (
+              <div className={styles.downloadModal}>
+                <div className={styles.modalContent}>
+                  <p>Choose a format to download:</p>
+                  <button onClick={downloadPDF} className={styles.modalButton}>
+                    <FaFilePdf size={20} /> Download PDF
+                  </button>
+                  <button
+                    onClick={downloadExcel}
+                    className={styles.modalButton}
+                  >
+                    <FaFileExcel size={20} />
+                    Download Excel
+                  </button>
+                  <button
+                    onClick={closeDownloadModal}
+                    className={styles.modalButton}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
           <div className={styles.employeeListContainer}>
             {employees.map((employee) => (
               <EmployeeCard

@@ -157,3 +157,40 @@
 .modalButton:hover {
   background: #45a049;
 }
+.booking{
+  position: relative;
+}
+.actionBox{
+  height: 200px;
+  width: 200px;
+  background-color: #2B7A78;
+  position: absolute;
+  right: 0rem;
+  top: 3rem;
+  z-index: 99;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid black;
+}
+.bookingId {
+  height: 40px;
+  width: 100%;
+  font-weight: 600;
+  color: #DEF2F1;
+  margin-top: 0.5rem;
+}
+.bill{
+  height: 40px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #DEF2F1;
+  cursor: default;
+}

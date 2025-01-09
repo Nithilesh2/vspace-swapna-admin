@@ -19,6 +19,7 @@ import AllBookings from './components/AllBookings/AllBookings';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import Profile from './components/Profile/Profile';
 import NewOrders from './components/NewOrders/NewOrders';
+import BillInvoice from './components/AllBookings/BillInvoice/BillInvoice';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Route path='/addemployeerole' element={<AddEmployeeRole />} />
       <Route path='/allcustomers' element={<AllCustomers />} />
       <Route path='/allbookings' element={<AllBookings />} />
+      <Route path='/allbookings/bill' element={<BillInvoice />} /> {/* Add the bookingId so can track that customer's details */}
       <Route path='/payments' element={<Payments />} />
       <Route path='/allcars' element={<Cars />} />
       <Route path='/essentials/privacypolicy' element={<PrivacyPolicy />} />
