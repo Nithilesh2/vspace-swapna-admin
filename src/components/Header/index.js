@@ -25,6 +25,7 @@ import {
   FaEdit,
   FaEnvelope,
   FaPen,
+  FaUser,
 } from "react-icons/fa"
 import { FiBox, FiLogOut } from "react-icons/fi"
 import "./index.css"
@@ -353,6 +354,10 @@ const Header = () => {
         <div className="menu-item" onClick={() => navigate("/contactus")}>
           <FaEnvelope size={20} />
           {!toggleMenu && <h1>Contact Us</h1>}
+        </div>
+        <div className="menu-item" onClick={() => navigate("/profile")}>
+          <FaUser size={20} />
+          {!toggleMenu && <h1>Profile</h1>}
         </div>
 
         {/* Sign Out button */}
