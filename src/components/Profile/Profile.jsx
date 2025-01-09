@@ -80,7 +80,7 @@ const Profile = () => {
             </div>
             <div className={styles.buttonBox}>
               <button type="button" className={styles.btn} onClick={handleSubmit}>
-                Change
+                Save
               </button>
             </div>
           </form>

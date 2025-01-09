@@ -73,21 +73,17 @@ const AllCustomers = () => {
     doc.setFontSize(12)
 
     const columns = [
-      "Booking ID",
+      "Customer ID",
       "Customer Name",
-      "Car Booked",
-      "Booked From",
-      "Booked To",
-      "Total Cost",
+      "Customer Contact Number",
+      "Customer Email",
     ]
 
     const rows = customers.map((booking) => [
-      booking.bookingId,
-      booking.customerName,
-      booking.carBooked,
-      booking.bookedFrom,
-      booking.bookedTo,
-      booking.totalCost,
+      booking.id,
+      booking.name,
+      booking.contact,
+      booking.email,
     ])
 
     doc.autoTable({
@@ -97,7 +93,7 @@ const AllCustomers = () => {
       theme: "grid",
     })
 
-    doc.save("all_bookings.pdf")
+    doc.save("all_customers.pdf")
     setIsDownloadModalOpen(false)
   }
 
@@ -107,7 +103,7 @@ const AllCustomers = () => {
     XLSX.utils.book_append_sheet(workbook, worksheet, "Bookings")
     const excelFile = XLSX.write(workbook, { bookType: "xlsx", type: "array" })
 
-    saveAs(new Blob([excelFile]), "all_bookings.xlsx")
+    saveAs(new Blob([excelFile]), "all_customers.xlsx")
     setIsDownloadModalOpen(false)
   }
 
