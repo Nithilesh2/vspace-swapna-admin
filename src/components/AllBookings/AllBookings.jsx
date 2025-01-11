@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import styles from "./AllBookings.module.css"
 import StatusBar from "../Header/index"
-import { FaDownload, FaEllipsisV, FaFileExcel, FaFileInvoice, FaFilePdf, FaReceipt } from "react-icons/fa"
+import { FaDownload, FaEllipsisV, FaFileExcel, FaFilePdf, FaReceipt } from "react-icons/fa"
 import { jsPDF } from "jspdf"
 import "jspdf-autotable"
 import * as XLSX from "xlsx"
@@ -240,7 +240,7 @@ const AllBookings = () => {
                         <>
                           <div className={styles.actionBox}>
                             <div className={styles.bookingId} style={{textDecoration: 'underline'}}>Booking Id: {booking.bookingId}</div>
-                            <div className={styles.bill}>
+                            <div className={styles.bill} onClick={() => navigate('/allbookings/bill')}>
                               <FaReceipt size={20} />Bill Invoice
                             </div>
                           </div>

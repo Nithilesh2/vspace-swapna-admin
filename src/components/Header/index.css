@@ -131,3 +131,9 @@
   gap: 1rem;
   margin-bottom: 1rem;
 }
+
+@media print {
+  .navbar-container{
+    display: none !important;
+  }
+}
