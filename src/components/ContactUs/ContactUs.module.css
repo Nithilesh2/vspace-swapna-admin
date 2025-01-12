@@ -11,7 +11,6 @@
   flex-direction: column;
   align-items: center;
   margin-left: 1rem;
-  cursor: default;
 }
 .heading {
   text-align: center;
@@ -40,10 +39,10 @@
 .contactUsDetails label {
   font-weight: bold;
   color: #333333;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 .contactUsDetails p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.5;
   color: #333333;
   margin: 0.5rem 0;
@@ -89,4 +88,21 @@
 .editButton:hover,
 .submitButton:hover {
   background-color: #17252A;
+}
+@media screen and (max-width: 900px){
+  .main{
+    flex-direction: column;
+    height: 100dvh;
+  }
+  .container{
+    margin-left: 0;
+  }
+  .contactUsBox{
+    width: 95%;
+  }
+}
+@media screen and (max-width: 450px){
+  .contactUsDetails p {
+    font-size: 0.85rem;
+  }
 }

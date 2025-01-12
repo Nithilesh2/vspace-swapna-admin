@@ -7,19 +7,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 300px;
-  width: 360px;
+  height: 390px;
+  max-width: 360px;
+  width: 90%;
 }
-
 .profile {
   margin-bottom: 20px;
   width: 100%;
 }
-
 .boxes{
   margin: 5px 0;
 }
-
 .profileIcon {
   height: auto;
   width: 100%;
@@ -28,19 +26,16 @@
   justify-content: center;
   margin-bottom: 1rem;
 }
-
 .profile h2 {
   font-size: 1rem;
   color: #333;
   margin: 0;
 }
-
 .profile p {
   font-size: 1rem;
   color: #333;
   margin: 5px 0;
 }
-
 .actions {
   display: flex;
   flex-direction: row-reverse;
@@ -50,7 +45,6 @@
   width: 100%;
   justify-content: space-between;
 }
-
 .actionBtn {
   background-color: #fb8c00;
   color: white;
@@ -60,11 +54,9 @@
   border-radius: 5px;
   height: 40px;
 }
-
 .actionBtn:hover {
   background-color: #ffb74d;
 }
-
 .suspendBtn {
   padding: 8px 15px;
   font-size: 14px;
@@ -75,11 +67,9 @@
   border-radius: 5px;
   height: 40px;
 }
-
 .suspended {
   background-color: #f1c40f;
 }
-
 .editBtn {
   height: 40px;
   padding: 8px 15px;
@@ -90,12 +80,9 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
 .editBtn:hover {
   background-color: #388e3c;
 }
-
-/* Popup Styles */
 .popup {
   position: fixed;
   top: 0;
@@ -108,7 +95,6 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
-
 .popupContent {
   background-color: white;
   padding: 20px;
@@ -116,7 +102,6 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
-
 .confirmBtn,
 .cancelBtn {
   padding: 10px 20px;
@@ -125,17 +110,14 @@
   border-radius: 5px;
   margin: 5px;
 }
-
 .confirmBtn {
   background-color: #4caf50;
   color: white;
 }
-
 .cancelBtn {
   background-color: #f44336;
   color: white;
 }
-
 .input{
   height: 30px;
   width: auto;

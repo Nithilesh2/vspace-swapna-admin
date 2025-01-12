@@ -131,3 +131,24 @@
 .modalButton:hover {
   background: #45a049;
 }
+@media screen and (max-width: 900px){
+  .main{
+    flex-direction: column;
+  }
+  .container{
+    margin-left: 0;
+  }
+  .allBookingsHeading{
+    height: 50px;
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: 480px){
+  .allBookingsHeading{
+    height: 60px;
+  }
+  .bookingHeadings,.allBookingsData{
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
+}

@@ -14,14 +14,15 @@
 
 .navbar-container.collapsed {
   width: 80px;
+  transition: all .2s linear;
+  /* padding-top: 4rem; */
 }
 
 .toggleBtnInSideMenu {
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 20px 0;
+  /* position: absolute; */
+  /* z-index: 9999; */
+  font-size: 1.5rem;
+  /* padding: 1rem 0 0 1rem; */
 }
 
 .toggleLogo {
@@ -110,7 +111,7 @@
   color: #fff;
   margin: 0;
 }
-.signOutBtn{
+.signOutBtn {
   width: 100%;
   display: flex;
   align-items: center;
@@ -118,7 +119,7 @@
   margin-top: 20px;
 }
 
-.signOutBtn button{
+.signOutBtn button {
   height: 40px;
   width: 150px;
   border-radius: 30px;
@@ -133,7 +134,34 @@
 }
 
 @media print {
-  .navbar-container{
+  .navbar-container {
     display: none !important;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .navbar-container{
+    width: 100%;
+    background-color: #3AAFA9;
+    border: 2px solid black;
+    border-radius: 0 0 2rem 2rem;
+  }
+  .bottomMenu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .navbar-container.collapsed{
+    border: none;
+    box-shadow: none;
+  }
+  .navbar-container.collapsed .bottomMenu{
+    width: 100%;
+    position: relative;
+    z-index: -999;
+    opacity: 0;
+    height: 0;
   }
 }

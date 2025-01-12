@@ -2,9 +2,9 @@
   height: auto;
   width: 100%;
   display: flex;
-  background-color: #3AAFA9;
+  background-color: #3aafa9;
 }
-.container{
+.container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -23,34 +23,33 @@
   border-radius: 8px;
   box-shadow: 5px 10px 10px rgba(57, 57, 57, 0.684);
 }
-
-.btn{
+.btn {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
-
 .form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 590px;
+  max-width: 590px;
+  width: 90%;
   margin-left: 1rem;
-  padding: 20px; 
-  border: 2px solid #2b7a78; 
+  padding: 20px;
+  border: 2px solid #2b7a78;
   border-radius: 8px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
-.btnBox{
+.btnBox {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-.selectAllButton{
+.selectAllButton {
   height: 40px;
   width: 100px;
   border-radius: 15px;
@@ -60,7 +59,7 @@
   transition: background-color 0.3s;
 }
 
-.iconBox{
+.iconBox {
   height: 70px;
   width: 70px;
   border-radius: 50px;
@@ -70,7 +69,7 @@
   background-color: #ffffffef;
 }
 
-.icon{
+.icon {
   font-size: 2.7rem;
   color: #0e3533;
 }
@@ -107,7 +106,7 @@
   height: 20px;
 }
 
-.bottom{
+.bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -132,7 +131,8 @@
   transition: background-color 0.3s;
 }
 
-.submitButton:hover, .selectAllButton:hover {
+.submitButton:hover,
+.selectAllButton:hover {
   background-color: #205c59;
 }
 
@@ -209,7 +209,6 @@
   margin-top: 20px;
 }
 
-
 .inputGroup {
   margin-bottom: 15px;
 }
@@ -230,7 +229,7 @@
   font-size: 1rem;
 }
 
-.btns{
+.btns {
   height: auto;
   width: 100%;
   display: flex;
@@ -238,7 +237,8 @@
   justify-content: space-between;
 }
 
-.submitButton,.backButton {
+.submitButton,
+.backButton {
   padding: 10px 20px;
   font-size: 1rem;
   background-color: #2b7a78;
@@ -249,6 +249,21 @@
   transition: background-color 0.3s;
 }
 
-.submitButton:hover, .backButton:hover {
+.submitButton:hover,
+.backButton:hover {
   background-color: #205c59;
+}
+@media screen and (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
+  .container {
+    margin-left: 0;
+    overflow-y: hidden;
+  }
+}
+@media screen and (max-width: 450px){
+  .heading{
+    width: 95%;
+  }
 }

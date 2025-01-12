@@ -2,6 +2,7 @@ import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import styles from './index.module.css';
 
 const Progressbars = () => {
   const circularValues = [
@@ -16,10 +17,10 @@ const Progressbars = () => {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-around', width: '80%' }}>
+    <div className={styles.progressbarsContainer}>
+      <div className={styles.circularProgressbarContainer}>
         {circularValues.map((item, index) => (
-          <div key={index} style={{ width: '100px', textAlign: 'center' }}>
+          <div key={index} className={styles.circularProgressbarItem}>
             <CircularProgressbar
               value={item.value}
               text={item.label}
@@ -27,18 +28,23 @@ const Progressbars = () => {
                 pathColor: item.color,
                 textColor: '#333',
                 trailColor: '#dfe6e9',
+                width: '50%'
               })}
             />
-            <p>Lorem ipsum dolor sit amet dolor</p>
+            <p className={styles.circularProgressbarText}>Lorem ipsum dolor sit amet dolor</p>
           </div>
         ))}
       </div>
 
-      <div style={{ width: '80%', marginTop: '20px' }}>
+      <div className={styles.progressBarsContainer}>
         {progressBarValues.map((item, index) => (
-          <div key={index} style={{ marginBottom: '15px' }}>
-            <h5>{item.value}%</h5>
-            <ProgressBar now={item.value} label={`${item.label}`} variant={item.color === '#00b894' ? 'success' : 'danger'} />
+          <div key={index} className={styles.progressBarItem}>
+            <h5 className={styles.progressBarLabel}>{item.value}%</h5>
+            <ProgressBar 
+              now={item.value} 
+              label={`${item.label}`} 
+              variant={item.color === '#00b894' ? 'success' : 'danger'} 
+            />
           </div>
         ))}
       </div>

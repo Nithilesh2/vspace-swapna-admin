@@ -27,6 +27,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0 2rem;
+  align-items: center;
+  justify-content: center;
 }
 .card {
   background-color: #fff;
@@ -34,24 +36,20 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 .profile h2 {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
 }
-
 .profile p {
   font-size: 14px;
   margin: 5px 0;
 }
-
 .actions {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
-
 .suspendBtn {
   background-color: #f44336;
   color: #fff;
@@ -60,15 +58,12 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
 .suspendBtn.suspended {
   background-color: #bdbdbd;
 }
-
 .suspendBtn:hover {
   background-color: #d32f2f;
 }
-
 .editBtn {
   background-color: #4caf50;
   color: #fff;
@@ -77,11 +72,9 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
 .editBtn:hover {
   background-color: #388e3c;
 }
-
 .sidebar {
   width: 250px;
   background-color: #2b7a78;
@@ -94,7 +87,6 @@
   color: #fff;
   font-family: Arial, sans-serif;
 }
-
 .toggleBtnInSideMenu {
   height: auto;
   width: 100%;
@@ -102,13 +94,11 @@
   justify-content: flex-start;
   margin-bottom: 20px;
 }
-
 .userIcon {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
-
 .popup {
   position: fixed;
   top: 0;
@@ -124,13 +114,11 @@
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0s 0.3s;
 }
-
 .popup.show {
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease; 
 }
-
 .popupContent {
   background-color: #fff;
   padding: 20px;
@@ -142,20 +130,17 @@
   transform: translateY(20px); 
   animation: popupEnter 0.3s forwards;
 }
-
 @keyframes popupEnter {
   to {
     opacity: 1;
     transform: translateY(0); 
   }
 }
-
 .popup h3 {
   margin-bottom: 10px;
   font-size: 18px;
   font-weight: bold;
 }
-
 .popupInput {
   padding: 10px;
   font-size: 16px;
@@ -164,12 +149,10 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 .popupActions {
   display: flex;
   justify-content: space-between;
 }
-
 .yesBtn,
 .noBtn {
   padding: 10px 20px;
@@ -178,25 +161,20 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
 .yesBtn {
   background-color: #4caf50;
   color: white;
 }
-
 .noBtn {
   background-color: #f44336;
   color: white;
 }
-
 .yesBtn:hover {
   background-color: #388e3c;
 }
-
 .noBtn:hover {
   background-color: #d32f2f;
 }
-
 .errorMessage {
   color: #f44336;
   font-size: 14px;
@@ -206,7 +184,6 @@
   display: flex;
   justify-content: flex-end;
 }
-
 .actionBtn {
   background-color: #ffb74d; /* Light orange */
   color: white;
@@ -215,18 +192,15 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
 .actionBtn:hover {
   background-color: #fb8c00; /* Darker orange */
 }
-
 .actionBtns {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
 }
-
 .suspendBtn {
   background-color: #f44336;
   color: white;
@@ -235,11 +209,9 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
 .suspendBtn:hover {
   background-color: #d32f2f;
 }
-
 .editBtn {
   background-color: #4caf50;
   color: white;
@@ -248,11 +220,9 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
 .editBtn:hover {
   background-color: #388e3c;
 }
-
 .downloadButtons {
   display: flex;
   gap: 10px;
@@ -309,4 +279,12 @@
 }
 .modalButton:hover {
   background: #45a049;
+}
+@media screen and (max-width: 900px){
+  .main{
+    flex-direction: column;
+  }
+  .container{
+    margin-left: 0;
+  }
 }

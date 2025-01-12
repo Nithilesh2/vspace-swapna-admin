@@ -25,7 +25,8 @@
 }
 .formBox {
   height: auto;
-  width: 550px;
+  max-width: 550px;
+  width: 95%;
   border-radius: 40px;
   background-color: #fff;
   margin-bottom: 2rem;
@@ -37,7 +38,8 @@
 }
 .carImgBox {
   height: 270px;
-  width: 350px;
+  max-width: 350px;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,9 +48,9 @@
   border: 1px solid black;
 }
 .carImgBox img {
-  height: 100%;
+  height: 80%;
   width: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 .carDetails {
   height: auto;
@@ -68,7 +70,8 @@
 }
 .aboutCarPrice {
   height: 45px;
-  width: 320px;
+  max-width: 320px;
+  width: 90%;
   border-radius: 10px;
   padding-left: 1rem;
   font-size: 1.05rem;
@@ -92,13 +95,13 @@
   height: 40px;
   width: 100px;
   border-radius: 10px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   font-size: 1rem;
   font-weight: 500;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
-.submitBtn:hover{
+.submitBtn:hover {
   background-color: rgb(72, 72, 72);
 }
 .modalOverlay {
@@ -118,7 +121,7 @@
   padding: 20px;
   border-radius: 10px;
   width: 400px;
-  max-width: 100%;
+  max-width: 95%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 .modalContent {
@@ -139,32 +142,34 @@
   color: white;
   height: 40px;
   width: 100px;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 .submitButton {
   height: 40px;
   width: 100px;
   background-color: #4caf50;
   color: white;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
-.submitButton:hover, .cancelButton:hover{
+.submitButton:hover,
+.cancelButton:hover {
   background-color: rgb(72, 72, 72);
 }
-.pricesBox{
+.pricesBox {
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
-.boxes{
+.boxes {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
-.addBtn,.removeBtn{
+.addBtn,
+.removeBtn {
   height: 40px;
   width: 40px;
   border-radius: 10px;
@@ -174,4 +179,16 @@
   justify-content: center;
   background-color: rgb(39, 39, 39);
   color: white;
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
+  .container {
+    margin-left: 0;
+  }
+  .formBox{
+    border-radius: 20px;
+  }
 }

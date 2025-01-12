@@ -6,7 +6,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
 }
-.right{
+.right {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -27,46 +27,42 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 590px;
+  max-width: 590px;
+  width: 95%;
   margin-left: 1rem;
-  padding: 20px; 
-  border: 2px solid #2b7a78; 
+  padding: 20px;
+  border: 2px solid #2b7a78;
   border-radius: 8px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
-
-
 .formGroup {
   display: flex;
   flex-direction: column;
 }
-
 .label {
   margin-bottom: 5px;
   font-size: 1rem;
   color: #000000;
 }
-
-.input, .textarea {
+.input,
+.textarea {
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
   transition: border-color 0.3s;
 }
-
-.input:focus, .textarea:focus {
+.input:focus,
+.textarea:focus {
   border-color: #3aafa9;
-  outline: none; 
+  outline: none;
 }
-
 .textarea {
   resize: vertical;
   height: 100px;
 }
-
 .submitButton {
   padding: 10px 20px;
   font-size: 16px;
@@ -77,11 +73,9 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .submitButton:hover {
   background-color: #205c59;
 }
-
 .modal {
   position: fixed;
   top: 0;
@@ -94,7 +88,6 @@
   align-items: center;
   z-index: 1000;
 }
-
 .modalContent {
   background-color: white;
   padding: 20px;
@@ -103,7 +96,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
 }
-
 .modalCloseButton {
   padding: 10px 20px;
   background-color: #2b7a78;
@@ -113,7 +105,17 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .modalCloseButton:hover {
   background-color: #205c59;
+}
+@media screen and (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
+  .container {
+    margin-left: 0;
+  }
+  .form{
+    margin: 0;
+  }
 }

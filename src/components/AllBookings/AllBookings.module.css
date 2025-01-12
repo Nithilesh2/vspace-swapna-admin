@@ -160,13 +160,13 @@
 .modalButton:hover {
   background: #45a049;
 }
-.booking{
+.booking {
   position: relative;
 }
-.actionBox{
+.actionBox {
   height: 200px;
   width: 200px;
-  background-color: #2B7A78;
+  background-color: #2b7a78;
   position: absolute;
   right: 0rem;
   top: 3rem;
@@ -182,10 +182,10 @@
   height: 40px;
   width: 100%;
   font-weight: 600;
-  color: #DEF2F1;
+  color: #def2f1;
   margin-top: 0.5rem;
 }
-.bill{
+.bill {
   height: 40px;
   width: 90%;
   display: flex;
@@ -195,5 +195,32 @@
   font-weight: 600;
   border: 2px solid black;
   border-radius: 10px;
-  background-color: #DEF2F1;
+  background-color: #def2f1;
+}
+@media screen and (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
+  .container {
+    margin-left: 0;
+  }
+  .allBookingsHeading {
+    height: 50px;
+  }
+  .bookingHeadings,.allBookingsData {
+    font-size: 0.8rem;
+  }
+  .filterBox{
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 480px) {
+  .allBookingsHeading {
+    height: 60px;
+  }
+  .bookingHeadings,
+  .allBookingsData {
+    font-size: 0.65rem;
+    font-weight: 600;
+  }
 }

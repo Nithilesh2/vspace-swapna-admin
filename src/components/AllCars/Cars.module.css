@@ -30,6 +30,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
+  align-items: center;
   gap: 2.2rem;
-  margin-left: 2rem;
+  padding-left: 4rem;
+}
+@media screen and (max-width: 900px){
+  .main{
+    flex-direction: column;
+  }
+  .container{
+    margin-left: 0;
+  }
+  .allCars{
+    height: 100%;
+    padding-left: 0;
+    justify-content: center;
+  }
 }

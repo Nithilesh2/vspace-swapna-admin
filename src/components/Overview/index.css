@@ -1,6 +1,6 @@
 /* Container Styling */
 .overview-container {
-  width: 100vw;
+  width: 100%;
   justify-content: space-between;
   padding: 20px;
   background-color: #3aafa9;
@@ -10,6 +10,10 @@
 .overview {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon {
@@ -42,12 +46,11 @@
   border-radius: 15px;
   padding: 20px;
   padding-bottom: 0px;
-  width: 35%;
+  width: 100%;
   max-width: 280px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative; /* For positioning the icon */
-  text-align: left; /* Align text to the left */
-  /* Ensure all cards have the same height */
+  position: relative;
+  text-align: left;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -107,27 +110,25 @@ p {
   font-weight: bold;
 }
 
-.overview-header .filter-container {
+.filter-container {
   display: flex;
   align-items: center;
 }
 
-/* Container Styling */
 .overview-container {
+  display: flex;
   justify-content: space-between;
   padding: 20px;
   background-color: #3aafa9;
-  flex-wrap: wrap; /* Ensures responsiveness */
-  overflow-y: auto; /* Allow the main container to scroll vertically */
-  height: auto; /* Full height of the viewport */
+  flex-wrap: wrap; 
+  overflow-y: auto; 
+  height: auto; 
+  flex-direction: column;
 }
-
-.overview {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; /* Ensure responsiveness */
+.graphs-container,
+.progressbars-container {
+  width: 100%;
 }
-
 .icon {
   position: absolute;
   top: 10px;
@@ -152,36 +153,30 @@ p {
   font-size: 25px;
 }
 
-/* Card Styling */
-
-/* Ensure responsiveness */
-@media (max-width: 768px) {
+@media only screen and (max-width: 900px) {
+  .overview-header {
+    flex-direction: column;
+  }
+  .filter-container {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+  .filter-form {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 768px) {
   .overview-container {
     flex-direction: column;
     align-items: center;
   }
-
   .overview-card {
-    max-width: 100%; /* Take full width on smaller screens */
+    width: 100%;
   }
 }
-
-/* Adjust overflow and ensure vertical scrolling */
 body,
 html {
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-/* Ensure responsiveness */
-@media (max-width: 768px) {
-  .overview-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .overview-card {
-    max-width: 100%; /* Take full width on smaller screens */
-  }
 }

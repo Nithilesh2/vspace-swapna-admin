@@ -120,22 +120,25 @@ By using our website, you consent to this privacy policy.`
         </div>
 
         {showPasswordPrompt && (
-          <div className={styles.passwordPrompt}>
-            <label htmlFor="adminPass">Enter Admin Password:</label>
-            <input
-              type="password"
-              id="adminPass"
-              value={adminPass}
-              onChange={(e) => setAdminPass(e.target.value)}
-              className={styles.passwordInput}
-            />
-            <button
-              onClick={handlePasswordSubmit}
-              className={styles.passwordSubmitButton}
-            >
-              Submit
-            </button>
-          </div>
+          <>
+            <div className={styles.backdrop} onClick={() => setShowPasswordPrompt(false)}></div>
+            <div className={styles.passwordPrompt}>
+              <label htmlFor="adminPass">Enter Admin Password:</label>
+              <input
+                type="password"
+                id="adminPass"
+                value={adminPass}
+                onChange={(e) => setAdminPass(e.target.value)}
+                className={styles.passwordInput}
+              />
+              <button
+                onClick={handlePasswordSubmit}
+                className={styles.passwordSubmitButton}
+              >
+                Submit
+              </button>
+            </div>
+          </>
         )}
       </div>
     </div>

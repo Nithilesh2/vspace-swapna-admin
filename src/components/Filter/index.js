@@ -1,25 +1,21 @@
-import React, { useState } from 'react';
-import { HiAdjustmentsHorizontal } from "react-icons/hi2";
-import './index.css'; // Assuming you have a separate CSS file for styling
+import React, { useState } from "react"
+import { HiAdjustmentsHorizontal } from "react-icons/hi2"
+import "./index.css" // Assuming you have a separate CSS file for styling
 
 const Filter = () => {
-  const [showFilter, setShowFilter] = useState(true); // Filter is open by default
-  const [dateRange, setDateRange] = useState(''); // State for selected date range
+  const [showFilter, setShowFilter] = useState(true) // Filter is open by default
+  const [dateRange, setDateRange] = useState("") // State for selected date range
 
-  // Function to toggle filter visibility
   const toggleFilter = () => {
-    setShowFilter((prevShowFilter) => !prevShowFilter);
-  };
+    setShowFilter((prevShowFilter) => !prevShowFilter)
+  }
 
-  // Function to handle dropdown change
   const handleDateRangeChange = (e) => {
-    setDateRange(e.target.value);
-    // You can calculate and set the dates based on the selected range here
-  };
+    setDateRange(e.target.value)
+  }
 
   return (
     <div className="filter-container">
-      {/* Dropdown menu for predefined date ranges */}
       {showFilter && (
         <select
           value={dateRange}
@@ -35,26 +31,27 @@ const Filter = () => {
         </select>
       )}
 
-      {/* Filter form */}
       {showFilter && (
         <div className="filter-form">
-          <label htmlFor="from-date">From Date:</label>
-          <input type="date" id="from-date" />
-
-          <label htmlFor="to-date">To Date:</label>
-          <input type="date" id="to-date" />
+          <div>
+            <label htmlFor="from-date">From Date:</label>
+            <input type="date" id="from-date" />
+          </div>
+          <div>
+            <label htmlFor="to-date">To Date:</label>
+            <input type="date" id="to-date" />
+          </div>
         </div>
       )}
 
-      {/* Filter Icon */}
       <div
-        className={`filter-icon ${showFilter ? 'active' : ''}`}
+        className={`filter-icon ${showFilter ? "active" : ""}`}
         onClick={toggleFilter}
       >
         <HiAdjustmentsHorizontal />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Filter;
+export default Filter
