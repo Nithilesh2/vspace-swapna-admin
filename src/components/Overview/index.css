@@ -1,10 +1,9 @@
-/* Container Styling */
 .overview-container {
   width: 100%;
   justify-content: space-between;
   padding: 20px;
   background-color: #3aafa9;
-  flex-wrap: wrap; /* Ensures responsiveness */
+  flex-wrap: wrap; 
 }
 
 .overview {
@@ -15,7 +14,17 @@
   align-items: center;
   justify-content: center;
 }
-
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #2b7a78;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 5px 10px 10px rgba(57, 57, 57, 0.684);
+}
 .icon {
   position: absolute;
   top: 10px;
@@ -24,22 +33,19 @@
   color: #feffff;
   background-color: #111827;
   height: 40px;
-  width: 40px; /* Make width and height equal for a round shape */
+  width: 40px; 
   text-align: center;
-  border-radius: 50%; /* Ensures the background is perfectly round */
+  border-radius: 50%; 
   display: flex;
-  align-items: center; /* Vertically center the icon */
-  justify-content: center; /* Horizontally center the icon */
+  align-items: center; 
+  justify-content: center; 
 }
-
 .title {
   font-weight: bold;
 }
-
 .rupee-icon {
   font-size: 25px;
 }
-/* Card Styling */
 .overview-card {
   background-color: #def2f1;
   margin: 10px;
@@ -55,66 +61,53 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
-/* Card Title and Icon Styling */
 .card-title {
   font-size: 18px;
   margin-bottom: 10px;
   color: #4b5563;
   position: relative;
 }
-
 .card-title span {
   margin-left: 10px;
 }
-
 .card-title i {
   font-size: 28px;
   color: #6ee7b7;
   position: absolute;
   top: 0;
-  right: 0; /* Align icon to the top-right */
+  right: 0;
 }
-
-/* Pricing and Numbers Styling */
 h2 {
   font-size: 28px;
   font-weight: bold;
   margin: 10px 0;
   color: #111827;
 }
-
-/* Percentage Increase Text Styling */
 p {
   font-size: 14px;
   color: #6b7280;
   display: flex;
   align-items: center;
 }
-
 .increase {
   color: #10b981;
   font-weight: bold;
   margin-right: 5px;
 }
-
 .overview-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px; /* Adjust spacing as needed */
+  margin-bottom: 20px;
 }
-
 .overview-header h1 {
   font-size: 24px;
   font-weight: bold;
 }
-
 .filter-container {
   display: flex;
   align-items: center;
 }
-
 .overview-container {
   display: flex;
   justify-content: space-between;
@@ -137,22 +130,19 @@ p {
   color: #feffff;
   background-color: #111827;
   height: 40px;
-  width: 40px; /* Make width and height equal for a round shape */
+  width: 40px; 
   text-align: center;
-  border-radius: 50%; /* Ensures the background is perfectly round */
+  border-radius: 50%; 
   display: flex;
-  align-items: center; /* Vertically center the icon */
-  justify-content: center; /* Horizontally center the icon */
+  align-items: center; 
+  justify-content: center; 
 }
-
 .title {
   font-weight: bold;
 }
-
 .rupee-icon {
   font-size: 25px;
 }
-
 @media only screen and (max-width: 900px) {
   .overview-header {
     flex-direction: column;

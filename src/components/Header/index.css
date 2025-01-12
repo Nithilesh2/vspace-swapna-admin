@@ -11,45 +11,34 @@
   font-family: Arial, sans-serif;
   transition: width 0.3s ease-in-out;
 }
-
 .navbar-container.collapsed {
   width: 80px;
   transition: all .2s linear;
-  /* padding-top: 4rem; */
 }
-
 .toggleBtnInSideMenu {
-  /* position: absolute; */
-  /* z-index: 9999; */
-  font-size: 1.5rem;
-  /* padding: 1rem 0 0 1rem; */
+  font-size: 1.6rem;
+  padding: 1rem 0 0 0rem;
 }
-
 .toggleLogo {
   font-size: 1.4rem;
   cursor: pointer;
   margin-left: 5px;
   transition: transform 0.3s ease;
 }
-
 .toggleLogo.right-arrow {
   transform: rotate(0deg);
 }
-
 .toggleLogo.left-arrow {
   transform: rotate(180deg);
 }
-
 .swapna-logo {
   width: 150px;
   margin: 0 auto 20px;
   transition: opacity 0.3s ease-in-out;
 }
-
 .swapna-logo.hidden {
   opacity: 0;
 }
-
 .menu-item {
   display: flex;
   align-items: center;
@@ -58,40 +47,34 @@
   margin-bottom: 10px;
   gap: 1rem;
   transition: all 0.3s ease-in-out;
+  width: 30%;
 }
-
 .menu-item:hover {
   background-color: #3a506b;
   border-radius: 8px;
 }
-
 .navbar-container.collapsed .menu-item {
   justify-content: center;
   gap: 0;
 }
-
 .navbar-container.collapsed .menu-item h1 {
   display: none;
 }
-
 .menu-item h1 {
   font-size: 16px;
   color: #fff;
   margin: 0;
   font-weight: normal;
 }
-
 .menu-item.active {
   background-color: #3a506b;
   border-radius: 8px;
 }
-
 .submenu {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
 .submenu-item {
   padding: 8px;
   cursor: pointer;
@@ -101,11 +84,9 @@
   align-items: center;
   gap: 1rem;
 }
-
 .submenu-item:hover {
   background-color: #3a506b;
 }
-
 .submenu-item h1 {
   font-size: 16px;
   color: #fff;
@@ -118,7 +99,6 @@
   justify-content: center;
   margin-top: 20px;
 }
-
 .signOutBtn button {
   height: 40px;
   width: 150px;
@@ -132,13 +112,11 @@
   gap: 1rem;
   margin-bottom: 1rem;
 }
-
 @media print {
   .navbar-container {
     display: none !important;
   }
 }
-
 @media only screen and (max-width: 900px) {
   .navbar-container{
     width: 100%;

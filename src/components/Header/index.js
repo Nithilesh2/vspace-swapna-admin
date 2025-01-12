@@ -32,7 +32,7 @@ import "./index.css"
 import { useNavigate } from "react-router-dom"
 
 const Header = () => {
-  const [toggleMenu, setToggleMenu] = useState(false)
+  const [toggleMenu, setToggleMenu] = useState(true)
   const [activeSubmenus, setActiveSubmenus] = useState({
     payments: false,
     employees: false,

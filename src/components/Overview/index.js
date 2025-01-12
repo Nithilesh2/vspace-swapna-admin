@@ -19,7 +19,7 @@ const OverviewCards = () => {
   return (
     <div className="overview-container">
       <div className="overview-header">
-        <h1>Overview</h1>
+        <h2 className='heading'>Overview</h2>
         <Filter />
       </div>
 
@@ -89,12 +89,10 @@ const OverviewCards = () => {
         </div>
       </div>
 
-      {/* Add a wrapper around graphs to keep them stacked */}
       <div className="graphs-container mb-5">
         <DashboardGraphs />
       </div>
 
-      {/* Ensure progress bars are below everything */}
       <div className="progressbars-container">
         <Progressbars />
       </div>
