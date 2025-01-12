@@ -13,7 +13,7 @@
 }
 .navbar-container.collapsed {
   width: 80px;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 .toggleBtnInSideMenu {
   font-size: 1.6rem;
@@ -117,10 +117,20 @@
     display: none !important;
   }
 }
+@media only screen and (max-width: 510px) {
+  .menu-item {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .menu-item {
+    width: 60%;
+  }
+}
 @media only screen and (max-width: 900px) {
-  .navbar-container{
+  .navbar-container {
     width: 100%;
-    background-color: #3AAFA9;
+    background-color: #3aafa9;
     border: 2px solid black;
     border-radius: 0 0 2rem 2rem;
   }
@@ -131,11 +141,11 @@
     align-items: center;
     justify-content: space-evenly;
   }
-  .navbar-container.collapsed{
+  .navbar-container.collapsed {
     border: none;
     box-shadow: none;
   }
-  .navbar-container.collapsed .bottomMenu{
+  .navbar-container.collapsed .bottomMenu {
     width: 100%;
     position: relative;
     z-index: -999;
