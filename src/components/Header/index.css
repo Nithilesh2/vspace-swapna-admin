@@ -47,7 +47,7 @@
   margin-bottom: 10px;
   gap: 1rem;
   transition: all 0.3s ease-in-out;
-  width: 30%;
+  width: 100%;
 }
 .menu-item:hover {
   background-color: #3a506b;
@@ -117,16 +117,6 @@
     display: none !important;
   }
 }
-@media only screen and (max-width: 510px) {
-  .menu-item {
-    width: 50%;
-  }
-}
-@media only screen and (max-width: 430px) {
-  .menu-item {
-    width: 60%;
-  }
-}
 @media only screen and (max-width: 900px) {
   .navbar-container {
     width: 100%;
@@ -151,5 +141,18 @@
     z-index: -999;
     opacity: 0;
     height: 0;
+  }
+  .menu-item{
+    width: 30%;
+  }
+}
+@media only screen and (max-width: 510px) {
+  .menu-item {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .menu-item {
+    width: 60%;
   }
 }

@@ -157,7 +157,14 @@
   background-color: #4c5b5f;
   color: #def2f1;
 }
-
+@media screen and (max-width: 900px) {
+  .main {
+    flex-direction: column;
+  }
+  .container {
+    margin-left: 0;
+  }
+}
 @media print {
   .buttons{
     display: none;
