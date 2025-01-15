@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { FaUserCircle } from "react-icons/fa";
-import styles from "./EmployeeCard.module.css";
+import React, { useState } from "react"
+import { FaUserCircle } from "react-icons/fa"
+import styles from "./EmployeeCard.module.css"
 
 const EmployeeCard = ({
   id,
@@ -10,51 +10,49 @@ const EmployeeCard = ({
   isSuspended,
   handleSuspend,
 }) => {
-  const [showActions, setShowActions] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [isEditing, setIsEditing] = useState(false); // State to toggle edit mode
+  const [showActions, setShowActions] = useState(false)
+  const [showPopup, setShowPopup] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
   const [formData, setFormData] = useState({
     id,
     name,
     email,
     designation,
-  });
+  })
 
   const handleActionClick = () => {
-    setShowActions(true); // Show suspend and edit buttons
-  };
+    setShowActions(true)
+  }
 
   const handleSuspendClick = () => {
-    setShowPopup(true); // Show confirmation popup for suspend action
-  };
+    setShowPopup(true)
+  }
 
   const handlePopupConfirm = () => {
-    handleSuspend(id); // Call the handleSuspend logic
-    setShowPopup(false); // Close the popup
-    setShowActions(false); // Hide suspend and edit buttons
-  };
+    handleSuspend(id)
+    setShowPopup(false)
+    setShowActions(false)
+  }
 
   const handlePopupCancel = () => {
-    setShowPopup(false); // Close the popup without suspending
-  };
+    setShowPopup(false)
+  }
 
   const handleEditClick = () => {
-    setIsEditing(true); // Enable edit mode
-  };
+    setIsEditing(true)
+  }
 
   const handleSaveClick = () => {
-    setIsEditing(false); // Disable edit mode
-    // You can also send updated formData to the server here
-    console.log("Updated Employee Info:", formData);
-  };
+    setIsEditing(false)
+  }
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   return (
     <div className={styles.card}>
@@ -166,7 +164,7 @@ const EmployeeCard = ({
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default EmployeeCard;
+export default EmployeeCard

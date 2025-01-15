@@ -72,6 +72,7 @@ const EmployeeList = () => {
       )
       setShowPopup(false)
       alert("Employee suspended successfully!")
+      setPassword('')
     } else {
       setErrorMessage("Incorrect password!")
     }
@@ -204,7 +205,7 @@ const EmployeeList = () => {
               className={styles.popupInput}
               placeholder="Password"
             />
-            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>} {/* Show error message */}
+            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
             <div className={styles.popupActions}>
               <button onClick={handleCancel} className={styles.noBtn}>
                 No

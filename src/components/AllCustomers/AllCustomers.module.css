@@ -35,7 +35,7 @@
 .allBookingsHeading {
   height: 40px;
   width: 100%;
-  background-color: #fff;
+  background-color: #DEF2F1;
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 2fr 3fr 2fr 1fr;
@@ -43,7 +43,6 @@
   padding: 0 10px;
   gap: 5px;
 }
-
 .bookingHeadings {
   cursor: default;
   font-size: 1rem;
@@ -53,7 +52,7 @@
 .booking {
   height: 50px;
   width: 100%;
-  background-color: #fff;
+  background-color: #DEF2F1;
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 2fr 3fr 2fr 1fr;

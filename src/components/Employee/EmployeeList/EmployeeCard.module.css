@@ -1,5 +1,5 @@
 .card {
-  background-color: #fff;
+  background-color: #E2F1F0;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -121,7 +121,7 @@
 .input{
   height: 30px;
   width: auto;
-  border-radius: 20px;
+  border-radius: 10px;
   padding-left: 10px;
 }
 .saveBtn{

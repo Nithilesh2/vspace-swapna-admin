@@ -14,7 +14,6 @@ const AssignOrder = () => {
     dropDateTime: "",
     visitingPlace: "",
     totalDuration: "",
-    employeeName: "",
   })
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -90,20 +89,6 @@ const AssignOrder = () => {
         <div className={styles.right}>
           <h2 className={styles.heading}>Assign Order</h2>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.formGroup}>
-              <label htmlFor="employeeName" className={styles.label}>
-                Employee Name
-              </label>
-              <input
-                type="text"
-                id="employeeName"
-                name="employeeName"
-                value={formData.employeeName}
-                onChange={handleChange}
-                className={styles.input}
-                required
-              />
-            </div>
             <div className={styles.formGroup}>
               <label htmlFor="name" className={styles.label}>
                 Name

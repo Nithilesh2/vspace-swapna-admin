@@ -81,8 +81,11 @@ const AddEmployeeRole = () => {
     }
     else if(password !== confirmPassword) {
       alert("Passwords do not match!")
-
     }
+    setEmployeeName('')
+    setJobRole('')
+    setPassword('')
+    setConfirmPassword('')
   }
 
   return (

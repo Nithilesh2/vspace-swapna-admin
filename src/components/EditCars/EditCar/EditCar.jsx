@@ -5,6 +5,9 @@ import Statusbar from "../../Header/index"
 
 const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
   const [newImage, setNewImage] = useState(car.image)
+  const [amount, setAmount] = useState("") 
+  const [range, setRange] = useState("") 
+  const [hours, setHours] = useState("") 
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
@@ -16,6 +19,18 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
       }
       reader.readAsDataURL(file)
     }
+  }
+
+  const handleAmountChange = (e) => {
+    setAmount(e.target.value)
+  }
+
+  const handleRangeChange = (e) => {
+    setRange(e.target.value)
+  }
+
+  const handleHoursChange = (e) => {
+    setHours(e.target.value)
   }
 
   return (
@@ -73,8 +88,34 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
             value={car.description}
             onChange={onChange}
             placeholder="Description"
-            rows={6}
+            rows={3}
           />
+          <div className={styles.amountRangeHoursBox}>
+            <input
+              type="number"
+              placeholder="Hours"
+              value={hours} 
+              onChange={handleHoursChange}
+              className={styles.amountRangeHours}
+              min={1}
+            />
+            <input
+              type="number"
+              placeholder="Range"
+              value={range} 
+              onChange={handleRangeChange} 
+              className={styles.amountRangeHours}
+              min={1}
+            />
+            <input
+              type="number"
+              placeholder="Amount"
+              value={amount} 
+              onChange={handleAmountChange}
+              className={styles.amountRangeHours}
+              min={1}
+            />
+          </div>
         </form>
         <div className={styles.modalActions}>
           <button onClick={onCancel} className={styles.cancelButton}>

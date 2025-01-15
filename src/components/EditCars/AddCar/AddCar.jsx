@@ -1,55 +1,61 @@
-import React, { useState } from "react"
-import styles from "./AddCar.module.css"
-import Statusbar from "../../Header/index"
-import { FaPlus, FaTrash } from "react-icons/fa"
+import React, { useState } from "react";
+import styles from "./AddCar.module.css";
+import Statusbar from "../../Header/index";
+import { FaPlus, FaTrash } from "react-icons/fa";
 
 const AddCar = () => {
-  const [imagePreview, setImagePreview] = useState(null)
+  const [imagePreview, setImagePreview] = useState(null);
   const [carDetails, setCarDetails] = useState({
     name: "",
     passengers: "",
     bags: "",
     model: "",
     description: "",
-  })
-  const [prices, setPrices] = useState([""]) // Array to manage prices
-  const [showModal, setShowModal] = useState(false)
+  });
+  const [prices, setPrices] = useState([
+    { price: "", range: "", amount: "" },
+  ]);
+  const [showModal, setShowModal] = useState(false);
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onloadend = () => {
-        setImagePreview(reader.result)
-      }
-      reader.readAsDataURL(file)
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
     }
-  }
+  };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setCarDetails((prev) => ({
       ...prev,
       [name]: value,
-    }))
-  }
+    }));
+  };
 
-  const handlePriceChange = (index, value) => {
-    const updatedPrices = [...prices]
-    updatedPrices[index] = value
-    setPrices(updatedPrices)
-  }
+  const handlePriceChange = (index, e) => {
+    const { name, value } = e.target;
+    const updatedPrices = [...prices];
+    updatedPrices[index][name] = value;
+    setPrices(updatedPrices);
+  };
 
   const addPriceInput = () => {
-    setPrices((prevPrices) => [...prevPrices, ""])
-  }
+    setPrices((prevPrices) => [
+      ...prevPrices,
+      { price: "", range: "", amount: "" },
+    ]);
+  };
 
   const removePriceInput = (index) => {
-    setPrices((prevPrices) => prevPrices.filter((_, i) => i !== index))
-  }
+    setPrices((prevPrices) => prevPrices.filter((_, i) => i !== index));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const isFormValid =
       carDetails.name &&
@@ -57,35 +63,37 @@ const AddCar = () => {
       carDetails.bags &&
       carDetails.model &&
       carDetails.description &&
-      prices.every((price) => price.trim() !== "") && // Check all prices are filled
-      imagePreview
+      prices.every(
+        (price) => price.price.trim() !== "" && price.range.trim() !== "" && price.amount.trim() !== ""
+      ) &&
+      imagePreview;
 
     if (!isFormValid) {
       alert(
         "Please fill in all the fields, upload an image, and enter all price ranges."
-      )
-      return
+      );
+      return;
     }
 
-    setShowModal(true)
-  }
+    setShowModal(true);
+  };
 
   const handleModalCancel = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
 
   const handleModalSubmit = () => {
-    setShowModal(false)
+    setShowModal(false);
     setCarDetails({
       name: "",
       passengers: "",
       bags: "",
       model: "",
       description: "",
-    })
-    setPrices([""]) // Reset prices
-    alert("Successfully added a new Car")
-  }
+    });
+    setPrices([{ price: "", range: "", amount: "" }]);
+    alert("Successfully added a new Car");
+  };
 
   return (
     <>
@@ -96,11 +104,10 @@ const AddCar = () => {
           <form className={styles.formBox}>
             <div className={styles.carImgBox}>
               {imagePreview && (
-                // eslint-disable-next-line jsx-a11y/img-redundant-alt
                 <img
                   id="preview"
                   src={imagePreview}
-                  alt="Image Preview"
+                  alt="Image-Preview"
                   width="200"
                 />
               )}
@@ -154,7 +161,7 @@ const AddCar = () => {
               <textarea
                 name="description"
                 className={styles.aboutCarDesc}
-                rows={5}
+                rows={3}
                 placeholder="Car Description"
                 value={carDetails.description}
                 onChange={handleInputChange}
@@ -163,13 +170,37 @@ const AddCar = () => {
                 {prices.map((price, index) => (
                   <div className={styles.boxes} key={index}>
                     <input
-                      type="text"
-                      name={`price-${index}`}
-                      className={styles.aboutCarPrice}
+                      type="number"
+                      name="price"
+                      className={styles.aboutCarHoursRangeAndPrice}
                       required
-                      placeholder="Ex :- 24HRS (300 KM) - 1800 Rs"
-                      value={price}
-                      onChange={(e) => handlePriceChange(index, e.target.value)}
+                      placeholder="24HRS"
+                      value={price.price}
+                      onChange={(e) => handlePriceChange(index, e)}
+                      min={1}
+                      max={100}
+                    />
+                    <input
+                      type="number"
+                      name="range"
+                      className={styles.aboutCarHoursRangeAndPrice}
+                      required
+                      placeholder="300 KM"
+                      value={price.range}
+                      onChange={(e) => handlePriceChange(index, e)}
+                      min={1}
+                      max={10000}
+                    />
+                    <input
+                      type="number"
+                      name="amount"
+                      className={styles.aboutCarHoursRangeAndPrice}
+                      required
+                      placeholder="1800 Rs"
+                      value={price.amount}
+                      onChange={(e) => handlePriceChange(index, e)}
+                      min={1}
+                      max={100000}
                     />
                     <div
                       className={styles.removeBtn}
@@ -218,11 +249,10 @@ const AddCar = () => {
                 <strong>Description:</strong> {carDetails.description}
               </p>
               <p>
-                <strong>Prices:</strong> {prices.join(", ")}
+                <strong>Prices:</strong> {prices.map(p => `${p.price}, ${p.range}, ${p.amount}`).join(" | ")}
               </p>
               {imagePreview && (
-                // eslint-disable-next-line jsx-a11y/img-redundant-alt
-                <img src={imagePreview} alt="Car Image" width="200" />
+                <img src={imagePreview} alt="Car-Image" width="200" />
               )}
             </div>
             <div className={styles.modalActions}>
@@ -243,7 +273,7 @@ const AddCar = () => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default AddCar
+export default AddCar;

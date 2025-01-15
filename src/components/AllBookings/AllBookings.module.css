@@ -45,6 +45,8 @@
   width: auto;
   padding: 0 0.7rem;
   border-radius: 10px;
+  background-color: #DEF2F1;
+  border: none;
 }
 .to {
   font-size: 1.2rem;
@@ -63,7 +65,7 @@
 .allBookingsHeading {
   height: 40px;
   width: 100%;
-  background-color: #fff;
+  background-color: #DEF2F1;
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
@@ -81,7 +83,7 @@
 .booking {
   height: 50px;
   width: 100%;
-  background-color: #fff;
+  background-color: #DEF2F1;
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
