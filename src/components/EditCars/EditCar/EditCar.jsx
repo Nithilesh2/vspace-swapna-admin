@@ -5,9 +5,7 @@ import Statusbar from "../../Header/index"
 
 const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
   const [newImage, setNewImage] = useState(car.image)
-  const [amount, setAmount] = useState("") 
-  const [range, setRange] = useState("") 
-  const [hours, setHours] = useState("") 
+  const [pricing, setPricing] = useState(car.pricing)
 
   const handleImageChange = (e) => {
     const file = e.target.files[0]
@@ -21,16 +19,34 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
     }
   }
 
-  const handleAmountChange = (e) => {
-    setAmount(e.target.value)
+  const handleAmountChange = (e, index) => {
+    if (e.target.vaule === "") {
+      alert("Should not be empty")
+    } else {
+      const newPricing = [...pricing]
+      newPricing[index].amount = e.target.value
+      setPricing(newPricing)
+    }
   }
 
-  const handleRangeChange = (e) => {
-    setRange(e.target.value)
+  const handleRangeChange = (e, index) => {
+    if (e.target.vaule === "") {
+      alert("Should not be empty")
+    } else {
+      const newPricing = [...pricing]
+      newPricing[index].range = e.target.value
+      setPricing(newPricing)
+    }
   }
 
-  const handleHoursChange = (e) => {
-    setHours(e.target.value)
+  const handleHoursChange = (e, index) => {
+    if (e.target.vaule === "") {
+      alert("Should not be empty")
+    } else {
+      const newPricing = [...pricing]
+      newPricing[index].hours = e.target.value
+      setPricing(newPricing)
+    }
   }
 
   return (
@@ -91,30 +107,31 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
             rows={3}
           />
           <div className={styles.amountRangeHoursBox}>
-            <input
-              type="number"
-              placeholder="Hours"
-              value={hours} 
-              onChange={handleHoursChange}
-              className={styles.amountRangeHours}
-              min={1}
-            />
-            <input
-              type="number"
-              placeholder="Range"
-              value={range} 
-              onChange={handleRangeChange} 
-              className={styles.amountRangeHours}
-              min={1}
-            />
-            <input
-              type="number"
-              placeholder="Amount"
-              value={amount} 
-              onChange={handleAmountChange}
-              className={styles.amountRangeHours}
-              min={1}
-            />
+            {pricing.map((price, index) => (
+              <div key={index} className={styles.amountRangeHours}>
+                <input
+                  type="number"
+                  placeholder="Hours"
+                  value={price.hours}
+                  onChange={(e) => handleHoursChange(e, index)}
+                  min={1}
+                />
+                <input
+                  type="number"
+                  placeholder="Range"
+                  value={price.range}
+                  onChange={(e) => handleRangeChange(e, index)}
+                  min={1}
+                />
+                <input
+                  type="number"
+                  placeholder="Amount"
+                  value={price.amount}
+                  onChange={(e) => handleAmountChange(e, index)}
+                  min={1}
+                />
+              </div>
+            ))}
           </div>
         </form>
         <div className={styles.modalActions}>
@@ -177,9 +194,21 @@ const CarList = () => {
       image:
         "https://imgd.aeplcdn.com/642x361/n/cw/ec/51428/hyundai-i20-left-front-three-quarter1.jpeg",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1500,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 1200,
+        },
+        {
+          hours: 12,
+          range: 200,
+          amount: 1000,
+        },
       ],
     },
     {
@@ -191,9 +220,21 @@ const CarList = () => {
         "A compact, practical hatchback with tall-boy design and great headroom, offering fuel efficiency and easy handling.",
       image: "https://t.ly/7olNT",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1200,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 1000,
+        },
+        {
+          hours: 12,
+          range: 200,
+          amount: 800,
+        },
       ],
     },
     {
@@ -205,9 +246,21 @@ const CarList = () => {
         "A small, sporty hatchback known for its responsive engine, solid build, and enjoyable driving dynamics.",
       image: "https://t.ly/CsXnI",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1000,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 800,
+        },
+        {
+          hours: 10,
+          range: 250,
+          amount: 1000,
+        },
       ],
     },
     {
@@ -219,9 +272,21 @@ const CarList = () => {
         "A compact sedan with a comfortable interior, strong diesel engine, and a focus on safety features like airbags and ABS.",
       image: "https://t.ly/S33d9",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1000,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 800,
+        },
+        {
+          hours: 10,
+          range: 250,
+          amount: 1000,
+        },
       ],
     },
     {
@@ -233,9 +298,21 @@ const CarList = () => {
         "A fuel-efficient, stylish compact sedan ideal for families, offering a spacious interior and smooth ride quality.",
       image: "https://t.ly/wr1EN",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1000,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 800,
+        },
+        {
+          hours: 10,
+          range: 250,
+          amount: 1000,
+        },
       ],
     },
     {
@@ -247,9 +324,21 @@ const CarList = () => {
         "A rugged compact SUV with a fuel-efficient diesel engine, offering good torque and features suited for both city and off-road driving.",
       image: "https://t.ly/fOenb",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1000,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 800,
+        },
+        {
+          hours: 10,
+          range: 250,
+          amount: 1000,
+        },
       ],
     },
     {
@@ -261,9 +350,21 @@ const CarList = () => {
         "A tech-loaded subcompact SUV featuring a clutchless manual transmission, sunroof, and infotainment for a comfortable, high-tech ride.",
       image: "https://i.cdn.newsbytesapp.com/images/l41120230408124304.jpeg",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1000,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 800,
+        },
+        {
+          hours: 10,
+          range: 250,
+          amount: 1000,
+        },
       ],
     },
     {
@@ -276,9 +377,21 @@ const CarList = () => {
       image:
         "https://res.cloudinary.com/dagkvnqd9/image/upload/20190823065014_maruti-xl6-3_em88gn.jpg",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1000,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 800,
+        },
+        {
+          hours: 10,
+          range: 250,
+          amount: 1000,
+        },
       ],
     },
     {
@@ -291,9 +404,21 @@ const CarList = () => {
       image:
         "https://d2m3nfprmhqjvd.cloudfront.net/blog/20220228140536/Spinny-Assured-Maruti-Suzuki-Swift.jpg",
       pricing: [
-        "24HRS (300 KM) - 1500 Rs",
-        "12HRS (300 KM) - 1300 Rs",
-        "12HRS (150 KM) - 1000 Rs",
+        {
+          hours: 24,
+          range: 300,
+          amount: 1000,
+        },
+        {
+          hours: 18,
+          range: 250,
+          amount: 800,
+        },
+        {
+          hours: 10,
+          range: 250,
+          amount: 1000,
+        },
       ],
     },
   ])
@@ -388,7 +513,7 @@ const CarList = () => {
                 <div className={styles.pricesBox}>
                   {car.pricing.map((price, priceIndex) => (
                     <p key={priceIndex} className={styles.prices}>
-                      {price}
+                      {`${price.hours}Hours(${price.range} KM) - ${price.amount}Rs`}
                     </p>
                   ))}
                 </div>

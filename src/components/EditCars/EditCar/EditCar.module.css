@@ -109,19 +109,21 @@
   background-color: #4caf50;
   color: white;
   font-weight: 600;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
-.editBtn:hover, .actionBtn:hover, .removeBtn:hover{
+.editBtn:hover,
+.actionBtn:hover,
+.removeBtn:hover {
   background-color: #333;
 }
-.actionButtonBox{
+.actionButtonBox {
   width: 100%;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
   padding-left: 1rem;
 }
-.removeBtn{
+.removeBtn {
   height: 40px;
   width: 80px;
   border-radius: 10px;
@@ -129,9 +131,9 @@
   background-color: #cd0909d7;
   color: white;
   font-weight: 600;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
-.actionBtn{
+.actionBtn {
   height: 40px;
   width: 80px;
   border-radius: 10px;
@@ -139,7 +141,7 @@
   background-color: #d85e00;
   color: white;
   font-weight: 600;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
 }
 .modalOverlay {
   position: absolute;
@@ -147,21 +149,21 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); 
-  backdrop-filter: blur(5px); 
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; 
+  z-index: 9999;
   overflow-y: scroll;
 }
 .modal {
-  background-color: #E2F1F0;
+  background-color: #e2f1f0;
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   width: 400px;
-  max-width: 90%; 
+  max-width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -181,7 +183,7 @@
   border-radius: 10px;
   font-size: 1rem;
   color: #333;
-  background-color: #E2F1F0;
+  background-color: #e2f1f0;
 }
 .modal textarea {
   resize: vertical;
@@ -202,11 +204,11 @@
   transition: background-color 0.3s;
 }
 .modalActions .cancelButton {
-  background-color: #f44336; 
+  background-color: #f44336;
   color: white;
 }
 .modalActions .saveButton {
-  background-color: #4caf50; 
+  background-color: #4caf50;
   color: white;
 }
 .modalActions button:hover {
@@ -235,31 +237,31 @@
 .imageInput {
   display: none;
 }
-.amountRangeHoursBox{
+.amountRangeHoursBox {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
 }
-.amountRangeHours{
-  width: 40%;
-  margin-bottom: 10px;
-
+.amountRangeHours {
+  width: 100%;
+  display: flex;
+  gap: 0.4rem;
 }
-@media screen and (max-width: 900px){
-  .main{
+@media screen and (max-width: 900px) {
+  .main {
     flex-direction: column;
   }
-  .container{
+  .container {
     margin-left: 0;
   }
-  .carList{
+  .carList {
     margin: 0;
   }
-  .carImg{
+  .carImg {
     height: 220px;
   }
 }
-@media screen and (max-width: 370px){
-  .carFeatures{
+@media screen and (max-width: 370px) {
+  .carFeatures {
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
