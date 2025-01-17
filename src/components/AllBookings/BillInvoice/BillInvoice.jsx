@@ -1,8 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import styles from "./BillInvoice.module.css"
 import StatusBar from "../../Header/index"
 
 const BillInvoice = () => {
+  const [editable, setEditable] = useState(false)
+
   const calculateTotalWithTax = (rate, taxRate, duration) => {
     const taxAmount = (rate * taxRate) / 100
     const totalAmount = rate + taxAmount
@@ -24,10 +26,21 @@ const BillInvoice = () => {
     carDetails.duration / 12
   )
 
+  const handleEdit = () => {
+    alert(
+      'You can edit the fields by clicking directly on that text. At last click "Save" when you are done.'
+    )
+    setEditable(!editable)
+  }
+
   return (
     <>
-      <div className={styles.main}>
-        <StatusBar className={styles.statusBar}/>
+      <div
+        className={styles.main}
+        contentEditable={editable}
+        suppressContentEditableWarning={true}
+      >
+        <StatusBar className={styles.statusBar} />
         <div className={styles.container}>
           <h2 className={styles.heading}>Bill</h2>
           <div className={styles.billBox}>
@@ -83,7 +96,7 @@ const BillInvoice = () => {
                 <div className={styles.data}>Rs. {totalWithTax.toFixed(2)}</div>
               </div>
             </div>
-            
+
             <div className={styles.subTotal}>
               <div className={styles.one}>
                 <div className={styles.subTotalText}>Sub Total</div>
@@ -108,8 +121,23 @@ const BillInvoice = () => {
             </div>
           </div>
           <div className={styles.buttons}>
-            <button type="button" className={styles.shareBtn}>Share</button>
-            <button type="button" className={styles.printBtn} onClick={() => window.print()}>Print</button>
+            <button
+              type="button"
+              className={styles.editBtn}
+              onClick={handleEdit}
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              className={styles.printBtn}
+              onClick={() => window.print()}
+            >
+              Print
+            </button>
+            <button type="button" className={styles.shareBtn}>
+              Share
+            </button>
           </div>
         </div>
       </div>

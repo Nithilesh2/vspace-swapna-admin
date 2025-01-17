@@ -1,81 +1,52 @@
-import React, { useState } from "react"
-import {
-  FaChevronRight,
-  FaChevronLeft,
-  FaHome,
-  FaMoneyBillAlt,
-  FaMoneyBillWave,
-  FaCreditCard,
-  FaLaptop,
-  FaMobileAlt,
-  FaStore,
-  FaQuestionCircle,
-  FaCarSide,
-  FaUserFriends,
-  FaBook,
-  FaLocationArrow,
-  FaTasks,
-  FaUsersCog,
-  FaUserSlash,
-  FaUserPlus,
-  FaList,
-  FaBell,
-  FaInfoCircle,
-  FaPlusCircle,
-  FaEdit,
-  FaEnvelope,
-  FaPen,
-  FaUser,
-} from "react-icons/fa"
+import React, { useEffect, useState } from "react"
+import { FaChevronRight, FaChevronLeft, FaHome, FaBell, FaMoneyBillAlt, FaMoneyBillWave, FaCreditCard, FaLaptop, FaStore, FaMobileAlt, FaQuestionCircle, FaCarSide, FaPlusCircle, FaUserFriends, FaBook, FaLocationArrow, FaTasks, FaUsersCog, FaEdit, FaList, FaUserPlus, FaUserSlash, FaInfoCircle, FaEnvelope, FaUser } from "react-icons/fa"
 import { FiBox, FiLogOut } from "react-icons/fi"
-import "./index.css"
 import { useNavigate } from "react-router-dom"
+import "./index.css"
 
 const Header = () => {
-  const [toggleMenu, setToggleMenu] = useState(true)
+  const [toggleMenu, setToggleMenu] = useState(() => {
+    const savedState = localStorage.getItem("sidebarToggleState")
+    return savedState ? JSON.parse(savedState) : true
+  })
+
+  const [logoImage] = useState(
+    "https://res.cloudinary.com/dagkvnqd9/image/upload/v1726917662/WhatsApp_Image_2024-09-13_at_9.33.52_PM-removebg_oalbnc.png"
+  )
+  
+
+  const navigate = useNavigate()
+
+  
   const [activeSubmenus, setActiveSubmenus] = useState({
     payments: false,
     employees: false,
     essentials: false,
     editCars: false,
-  })
+  });
 
-  const [logoImage, setLogoImage] = useState(
-    "https://res.cloudinary.com/dagkvnqd9/image/upload/v1726917662/WhatsApp_Image_2024-09-13_at_9.33.52_PM-removebg_oalbnc.png"
-  )
-  const [isEditing, setIsEditing] = useState(false)
+  useEffect(() => {
+    const savedToggleState = localStorage.getItem("sidebarToggleState");
+    if (savedToggleState) {
+      setToggleMenu(JSON.parse(savedToggleState));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("sidebarToggleState", JSON.stringify(toggleMenu));
+  }, [toggleMenu]);
 
   const handleMenuClick = (menu) => {
-    setActiveSubmenus((prevState) => {
-      const updatedState = {
-        ...prevState,
-        [menu]: !prevState[menu],
-      }
-      return updatedState
-    })
-  }
+    setActiveSubmenus((prevState) => ({
+      ...prevState,
+      [menu]: !prevState[menu],
+    }));
+  };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setLogoImage(reader.result)
-        setIsEditing(false)
-      }
-      reader.readAsDataURL(file)
-    }
-  }
-
-  const handleEditClick = () => {
-    setIsEditing(true)
-  }
-
-  const navigate = useNavigate()
 
   const navigateToPaymentPage = (paymentType, subMenuType) => {
-    navigate(`/payments/${paymentType}/${subMenuType}`)
-  }
+    navigate(`/payments/${paymentType}/${subMenuType}`);
+  };
 
   return (
     <>
@@ -112,40 +83,7 @@ const Header = () => {
                     borderRadius: "10px",
                   }}
                 />
-                <div
-                  style={{
-                    height: 34,
-                    width: 34,
-                    border: "2px solid black",
-                    position: "absolute",
-                    right: 30,
-                    borderRadius: 30,
-                    backgroundColor: "black",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    cursor: "pointer",
-                  }}
-                  onClick={handleEditClick}
-                >
-                  <FaPen size={16} />
-                </div>
-                {isEditing && (
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    style={{
-                      position: "absolute",
-                      top: "-10px",
-                      left: "30px",
-                      cursor: "pointer",
-                      backgroundColor: "white",
-                      height: "150px",
-                      width: "150px",
-                    }}
-                  />
-                )}
+                
               </>
             )}
           </div>
@@ -426,7 +364,7 @@ const Header = () => {
         </div>
       </div>
     </>
-  )
+  );
 }
 
 export default Header

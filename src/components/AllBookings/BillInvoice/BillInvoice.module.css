@@ -141,11 +141,11 @@
   width: 75%;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 3rem;
-  margin: 1rem 2rem 0 0 ;
+  margin: 1rem 2rem 1.5rem 0 ;
 }
-.shareBtn, .printBtn{
+.shareBtn, .printBtn, .editBtn{
   height: 40px;
   width: 90px;
   border-radius: 15px;
@@ -153,7 +153,7 @@
   color: black;
   transition:  all 0.2s linear;
 }
-.shareBtn:hover, .printBtn:hover{
+.shareBtn:hover, .printBtn:hover, .editBtn:hover{
   background-color: #4c5b5f;
   color: #def2f1;
 }

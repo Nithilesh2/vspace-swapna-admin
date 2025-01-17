@@ -4,7 +4,7 @@
   display: flex;
   background-color: #3AAFA9;
 }
-.container{
+.container {
   height: 100%;
   width: 100%;
   display: flex;
@@ -24,11 +24,30 @@
   border-radius: 8px;
   box-shadow: 5px 10px 10px rgba(57, 57, 57, 0.684);
 }
-@media screen and (max-width: 900px){
-  .main{
+.newOrdersBox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.noOrdersText {
+  text-align: center;
+  font-size: 18px;
+  color: black;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .main {
     flex-direction: column;
+    height: 100dvh;
   }
-  .container{
+  .container {
     margin-left: 0;
+  }
+  .noOrdersText{
+    font-size: 16px;
   }
 }
