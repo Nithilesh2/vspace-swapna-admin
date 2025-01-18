@@ -10,6 +10,7 @@ import {
   FaMapMarkerAlt,
   FaClipboardList,
 } from "react-icons/fa"
+import { toast } from "react-toastify";
 
 const AddEmployeeRole = () => {
   const [selectedRoles, setSelectedRoles] = useState([])
@@ -20,6 +21,8 @@ const AddEmployeeRole = () => {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [formVisible, setFormVisible] = useState(false)
   const [currentStep, setCurrentStep] = useState(1)
+  const green = (data) => toast.success(data)
+  const red = (data) => toast.warning(data)
 
   const roles = [
     { name: "Payments", icon: <FaMoneyCheckAlt className={styles.icon} /> },
@@ -53,11 +56,11 @@ const AddEmployeeRole = () => {
     e.preventDefault()
 
     if (selectedRoles.length === 0) {
-      alert("Please select at least one role.")
+      red("Please select at least one role.")
       return
     }
 
-    alert("Roles assigned successfully!")
+    green("Roles assigned successfully!")
 
     setStepCompleted(true)
     setCurrentStep(2)
@@ -66,7 +69,7 @@ const AddEmployeeRole = () => {
 
   const handleBackToRoles = () => {
     setCurrentStep(1)
-    setFormVisible(false) // Hide the second form
+    setFormVisible(false)
   }
 
   const handleSubmitEmployee = (e) => {
@@ -74,13 +77,13 @@ const AddEmployeeRole = () => {
 
     if (password === confirmPassword) {
       if ( password.length >= 8) {
-        alert("Employee assigned successfully!")
+        green("Employee assigned successfully!")
       } else if (password.length < 8) {
-        alert("Password must be at least 8 characters")
+        red("Password must be at least 8 characters")
       }
     }
     else if(password !== confirmPassword) {
-      alert("Passwords do not match!")
+      red("Passwords do not match!")
     }
     setEmployeeName('')
     setJobRole('')

@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import styles from "../PrivacyPolicy/PrivacyPolicy.module.css"
 import Statusbar from "../../Header/index"
+import { toast } from "react-toastify"
 
 const TermsAndConditions = () => {
+  const green = (data) => toast.success(data)
+  const red = (data) => toast.warning(data)
   const [isEditing, setIsEditing] = useState(false)
   const [policyText, setPolicyText] = useState(
     `
@@ -48,15 +51,15 @@ The Renter is liable for traffic violations.`
   }
 
   const handlePasswordSubmit = () => {
-    const correctPassword = "admin123" 
+    const correctPassword = "admin123"
     if (adminPass === correctPassword) {
       setPolicyText(editedPolicyText)
       setIsEditing(false)
       setShowPasswordPrompt(false)
       setAdminPass("")
-      alert("Terms And Conditions updated successfully!")
+      green("Terms And Conditions updated successfully!")
     } else {
-      alert("Incorrect password. Try again!")
+      red("Incorrect password. Try again!")
     }
   }
 
@@ -95,7 +98,10 @@ The Renter is liable for traffic violations.`
 
         {showPasswordPrompt && (
           <>
-            <div className={styles.backdrop} onClick={() => setShowPasswordPrompt(false)}></div>
+            <div
+              className={styles.backdrop}
+              onClick={() => setShowPasswordPrompt(false)}
+            ></div>
             <div className={styles.passwordPrompt}>
               <label htmlFor="adminPass">Enter Admin Password:</label>
               <input

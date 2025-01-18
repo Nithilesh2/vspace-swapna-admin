@@ -2,8 +2,10 @@ import React, { useState } from "react"
 import { FaUser, FaCar, FaSuitcaseRolling } from "react-icons/fa"
 import styles from "./EditCar.module.css"
 import Statusbar from "../../Header/index"
+import { toast } from "react-toastify"
 
 const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
+  const red = (data) => toast.warning(data)
   const [newImage, setNewImage] = useState(car.image)
   const [pricing, setPricing] = useState(car.pricing)
 
@@ -20,8 +22,8 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
   }
 
   const handleAmountChange = (e, index) => {
-    if (e.target.vaule === "") {
-      alert("Should not be empty")
+    if (e.target.value === "") {
+      red("Should not be empty")
     } else {
       const newPricing = [...pricing]
       newPricing[index].amount = e.target.value
@@ -30,8 +32,8 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
   }
 
   const handleRangeChange = (e, index) => {
-    if (e.target.vaule === "") {
-      alert("Should not be empty")
+    if (e.target.value === "") {
+      red("Should not be empty")
     } else {
       const newPricing = [...pricing]
       newPricing[index].range = e.target.value
@@ -40,8 +42,8 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
   }
 
   const handleHoursChange = (e, index) => {
-    if (e.target.vaule === "") {
-      alert("Should not be empty")
+    if (e.target.value === "") {
+      red("Should not be empty")
     } else {
       const newPricing = [...pricing]
       newPricing[index].hours = e.target.value
@@ -50,100 +52,102 @@ const EditCarModal = ({ car, onSave, onCancel, onChange }) => {
   }
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
-        <h3>Edit Car Details</h3>
-        <form>
-          <div className={styles.imageUploadSection}>
-            <img
-              src={newImage}
-              alt="Car Preview"
-              className={styles.imagePreview}
-            />
-            <label htmlFor="imageUpload" className={styles.uploadLabel}>
-              Change Image
-            </label>
+    <>
+      <div className={styles.modalOverlay}>
+        <div className={styles.modal}>
+          <h3>Edit Car Details</h3>
+          <form>
+            <div className={styles.imageUploadSection}>
+              <img
+                src={newImage}
+                alt="Car Preview"
+                className={styles.imagePreview}
+              />
+              <label htmlFor="imageUpload" className={styles.uploadLabel}>
+                Change Image
+              </label>
+              <input
+                id="imageUpload"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className={styles.imageInput}
+              />
+            </div>
             <input
-              id="imageUpload"
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className={styles.imageInput}
+              type="text"
+              name="name"
+              value={car.name}
+              onChange={onChange}
+              placeholder="Car Name"
             />
+            <input
+              type="number"
+              name="passengers"
+              value={car.passengers}
+              onChange={onChange}
+              placeholder="Passengers"
+            />
+            <input
+              type="number"
+              name="model"
+              value={car.model}
+              onChange={onChange}
+              placeholder="Model Year"
+            />
+            <input
+              type="number"
+              name="bags"
+              value={car.bags}
+              onChange={onChange}
+              placeholder="Bags"
+            />
+            <textarea
+              name="description"
+              value={car.description}
+              onChange={onChange}
+              placeholder="Description"
+              rows={3}
+            />
+            <div className={styles.amountRangeHoursBox}>
+              {pricing.map((price, index) => (
+                <div key={index} className={styles.amountRangeHours}>
+                  <input
+                    type="number"
+                    placeholder="Hours"
+                    value={price.hours}
+                    onChange={(e) => handleHoursChange(e, index)}
+                    min={1}
+                  />
+                  <input
+                    type="number"
+                    placeholder="Range"
+                    value={price.range}
+                    onChange={(e) => handleRangeChange(e, index)}
+                    min={1}
+                  />
+                  <input
+                    type="number"
+                    placeholder="Amount"
+                    value={price.amount}
+                    onChange={(e) => handleAmountChange(e, index)}
+                    min={1}
+                  />
+                </div>
+              ))}
+            </div>
+          </form>
+          <div className={styles.modalActions}>
+            <button onClick={onCancel} className={styles.cancelButton}>
+              Cancel
+            </button>
+            <button onClick={onSave} className={styles.saveButton}>
+              Publish
+            </button>
           </div>
-          <input
-            type="text"
-            name="name"
-            value={car.name}
-            onChange={onChange}
-            placeholder="Car Name"
-          />
-          <input
-            type="number"
-            name="passengers"
-            value={car.passengers}
-            onChange={onChange}
-            placeholder="Passengers"
-          />
-          <input
-            type="number"
-            name="model"
-            value={car.model}
-            onChange={onChange}
-            placeholder="Model Year"
-          />
-          <input
-            type="number"
-            name="bags"
-            value={car.bags}
-            onChange={onChange}
-            placeholder="Bags"
-          />
-          <textarea
-            name="description"
-            value={car.description}
-            onChange={onChange}
-            placeholder="Description"
-            rows={3}
-          />
-          <div className={styles.amountRangeHoursBox}>
-            {pricing.map((price, index) => (
-              <div key={index} className={styles.amountRangeHours}>
-                <input
-                  type="number"
-                  placeholder="Hours"
-                  value={price.hours}
-                  onChange={(e) => handleHoursChange(e, index)}
-                  min={1}
-                />
-                <input
-                  type="number"
-                  placeholder="Range"
-                  value={price.range}
-                  onChange={(e) => handleRangeChange(e, index)}
-                  min={1}
-                />
-                <input
-                  type="number"
-                  placeholder="Amount"
-                  value={price.amount}
-                  onChange={(e) => handleAmountChange(e, index)}
-                  min={1}
-                />
-              </div>
-            ))}
-          </div>
-        </form>
-        <div className={styles.modalActions}>
-          <button onClick={onCancel} className={styles.cancelButton}>
-            Cancel
-          </button>
-          <button onClick={onSave} className={styles.saveButton}>
-            Publish
-          </button>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -159,30 +163,36 @@ const ConfirmPasswordModal = ({ onConfirm, onCancel, errorMessage }) => {
   }
 
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
-        <h3>Admin Password Required</h3>
-        <input
-          type="password"
-          value={password}
-          onChange={handleChange}
-          placeholder="Enter Admin Password"
-        />
-        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
-        <div className={styles.modalActions}>
-          <button onClick={onCancel} className={styles.cancelButton}>
-            Cancel
-          </button>
-          <button onClick={handleSubmit} className={styles.confirmButton}>
-            Confirm
-          </button>
+    <>
+      <div className={styles.modalOverlay}>
+        <div className={styles.modal}>
+          <h3>Admin Password Required</h3>
+          <input
+            type="password"
+            value={password}
+            onChange={handleChange}
+            placeholder="Enter Admin Password"
+          />
+          {errorMessage && (
+            <p className={styles.errorMessage}>{errorMessage}</p>
+          )}
+          <div className={styles.modalActions}>
+            <button onClick={onCancel} className={styles.cancelButton}>
+              Cancel
+            </button>
+            <button onClick={handleSubmit} className={styles.confirmButton}>
+              Confirm
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 
 const CarList = () => {
+  const green = (data) => toast.success(data)
+  const red = (data) => toast.warning(data)
   const [cars, setCars] = useState([
     {
       name: "i20 (Petrol)",
@@ -451,10 +461,12 @@ const CarList = () => {
     updatedCars[editMode] = tempCar
     setCars(updatedCars)
     setEditMode(null)
+    green("Changes saved successfully!")
   }
 
   const handleCancelEdit = () => {
     setEditMode(null)
+    red("Edit cancelled")
   }
 
   const handleRemoveClick = (index) => {
@@ -471,14 +483,17 @@ const CarList = () => {
       setPasswordModalVisible(false)
       setActionVisibleIndex(null)
       setErrorMessage("")
+      green("Car removed successfully!")
     } else {
       setErrorMessage("Incorrect password. Please try again.")
+      red("Failed to remove car. Incorrect password.")
     }
   }
 
   const handlePasswordCancel = () => {
     setPasswordModalVisible(false)
     setErrorMessage("")
+    red("Car removal cancelled!")
   }
 
   return (

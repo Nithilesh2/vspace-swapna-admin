@@ -1,61 +1,63 @@
-import React, { useState } from "react";
-import styles from "./AddCar.module.css";
-import Statusbar from "../../Header/index";
-import { FaPlus, FaTrash } from "react-icons/fa";
+import React, { useState } from "react"
+import styles from "./AddCar.module.css"
+import Statusbar from "../../Header/index"
+import { FaPlus, FaTrash } from "react-icons/fa"
+import { toast } from "react-toastify"
 
 const AddCar = () => {
-  const [imagePreview, setImagePreview] = useState(null);
+  const green = (data) => toast.success(data)
+  const red = (data) => toast.warning(data)
+
+  const [imagePreview, setImagePreview] = useState(null)
   const [carDetails, setCarDetails] = useState({
     name: "",
     passengers: "",
     bags: "",
     model: "",
     description: "",
-  });
-  const [prices, setPrices] = useState([
-    { price: "", range: "", amount: "" },
-  ]);
-  const [showModal, setShowModal] = useState(false);
+  })
+  const [prices, setPrices] = useState([{ price: "", range: "", amount: "" }])
+  const [showModal, setShowModal] = useState(false)
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]
     if (file) {
-      const reader = new FileReader();
+      const reader = new FileReader()
       reader.onloadend = () => {
-        setImagePreview(reader.result);
-      };
-      reader.readAsDataURL(file);
+        setImagePreview(reader.result)
+      }
+      reader.readAsDataURL(file)
     }
-  };
+  }
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setCarDetails((prev) => ({
       ...prev,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handlePriceChange = (index, e) => {
-    const { name, value } = e.target;
-    const updatedPrices = [...prices];
-    updatedPrices[index][name] = value;
-    setPrices(updatedPrices);
-  };
+    const { name, value } = e.target
+    const updatedPrices = [...prices]
+    updatedPrices[index][name] = value
+    setPrices(updatedPrices)
+  }
 
   const addPriceInput = () => {
     setPrices((prevPrices) => [
       ...prevPrices,
       { price: "", range: "", amount: "" },
-    ]);
-  };
+    ])
+  }
 
   const removePriceInput = (index) => {
-    setPrices((prevPrices) => prevPrices.filter((_, i) => i !== index));
-  };
+    setPrices((prevPrices) => prevPrices.filter((_, i) => i !== index))
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const isFormValid =
       carDetails.name &&
@@ -64,36 +66,41 @@ const AddCar = () => {
       carDetails.model &&
       carDetails.description &&
       prices.every(
-        (price) => price.price.trim() !== "" && price.range.trim() !== "" && price.amount.trim() !== ""
+        (price) =>
+          price.price.trim() !== "" &&
+          price.range.trim() !== "" &&
+          price.amount.trim() !== ""
       ) &&
-      imagePreview;
+      imagePreview
 
     if (!isFormValid) {
-      alert(
+      red(
         "Please fill in all the fields, upload an image, and enter all price ranges."
-      );
-      return;
+      )
+      return
     }
 
-    setShowModal(true);
-  };
+    setShowModal(true)
+  }
 
   const handleModalCancel = () => {
-    setShowModal(false);
-  };
+    setShowModal(false)
+  }
 
   const handleModalSubmit = () => {
-    setShowModal(false);
+    setShowModal(false)
     setCarDetails({
       name: "",
       passengers: "",
       bags: "",
       model: "",
       description: "",
-    });
-    setPrices([{ price: "", range: "", amount: "" }]);
-    alert("Successfully added a new Car");
-  };
+    })
+    setPrices([{ price: "", range: "", amount: "" }])
+    setImagePreview(null)
+    document.getElementById("imageInput").value = ""
+    green("Successfully added a new Car")
+  }
 
   return (
     <>
@@ -249,7 +256,10 @@ const AddCar = () => {
                 <strong>Description:</strong> {carDetails.description}
               </p>
               <p>
-                <strong>Prices:</strong> {prices.map(p => `${p.price}, ${p.range}, ${p.amount}`).join(" | ")}
+                <strong>Prices:</strong>{" "}
+                {prices
+                  .map((p) => `${p.price}, ${p.range}, ${p.amount}`)
+                  .join(" | ")}
               </p>
               {imagePreview && (
                 <img src={imagePreview} alt="Car-Image" width="200" />
@@ -273,7 +283,7 @@ const AddCar = () => {
         </div>
       )}
     </>
-  );
-};
+  )
+}
 
-export default AddCar;
+export default AddCar

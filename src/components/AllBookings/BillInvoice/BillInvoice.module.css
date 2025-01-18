@@ -158,7 +158,8 @@
 }
 .shareBtn,
 .printBtn,
-.editBtn {
+.editBtn,
+.discardBtn {
   height: 40px;
   width: 90px;
   border-radius: 15px;
@@ -168,6 +169,7 @@
 }
 .shareBtn:hover,
 .printBtn:hover,
+.discardBtn:hover,
 .editBtn:hover {
   background-color: #4c5b5f;
   color: #def2f1;
@@ -247,7 +249,8 @@
   }
   .editBtn,
   .printBtn,
-  .shareBtn {
+  .shareBtn,
+  .discardBtn {
     height: 35px;
     width: 70px;
     font-size: 0.9rem;
@@ -281,7 +284,8 @@
   }
   .editBtn,
   .printBtn,
-  .shareBtn {
+  .shareBtn,
+  .discardBtn {
     height: 32px;
     width: 60px;
     font-size: 0.8rem;
@@ -301,6 +305,6 @@
   .billBox {
     height: 100dvh;
     width: 95%;
-    padding-top: 10px;
+    padding-top: 5rem;
   }
 }

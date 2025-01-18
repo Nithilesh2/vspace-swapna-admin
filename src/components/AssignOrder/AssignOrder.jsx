@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import styles from "./AssignOrder.module.css"
 import Sidebar from "../Header/index"
+import { toast } from "react-toastify"
 
 const AssignOrder = () => {
+  const green = (data) => toast.success(data)
+
   const [formData, setFormData] = useState({
     name: "",
     profession: "",
@@ -16,7 +19,7 @@ const AssignOrder = () => {
     totalDuration: "",
   })
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const calculateDuration = (pickup, drop) => {
     const pickupDate = new Date(pickup)
@@ -50,7 +53,7 @@ const AssignOrder = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setIsModalOpen(true);
+    setIsModalOpen(true)
     setFormData({
       name: "",
       profession: "",
@@ -64,11 +67,12 @@ const AssignOrder = () => {
       totalDuration: "",
       employeeName: "",
     })
+    green("Order assigned successfully!")
   }
 
   const closeModal = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   const cars = [
     "Swift",

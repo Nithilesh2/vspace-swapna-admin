@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { FaUserCircle } from "react-icons/fa"
 import styles from "./EmployeeCard.module.css"
+import { toast } from "react-toastify";
 
 const EmployeeCard = ({
   id,
@@ -19,6 +20,8 @@ const EmployeeCard = ({
     email,
     designation,
   })
+
+  const green = (data) => toast.success(data)
 
   const handleActionClick = () => {
     setShowActions(true)
@@ -44,6 +47,7 @@ const EmployeeCard = ({
 
   const handleSaveClick = () => {
     setIsEditing(false)
+    green("Employee details updated successfully")
   }
 
   const handleChange = (e) => {

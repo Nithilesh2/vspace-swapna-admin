@@ -1,8 +1,10 @@
 import React, { useState } from "react"
 import styles from "./ContactUs.module.css"
 import SideBar from "../Header/index"
+import { toast } from "react-toastify"
 
 const ContactUs = () => {
+  const green = (data) => toast.success(data)
   const [contactUsDetails, setContactUsDetails] = useState({
     number: "8309772580",
     email: "swapnaselfdrivecars@gmail.com",
@@ -20,7 +22,7 @@ const ContactUs = () => {
 
   const handleSave = () => {
     setEditable(false)
-    alert("Contact details updated successfully!")
+    green("Contact details updated successfully!")
   }
 
   return (
@@ -71,13 +73,15 @@ const ContactUs = () => {
               ) : (
                 <>
                   <p className={styles.contactUsInputParaBox}>
-                    <strong>Phone Number : &nbsp;</strong> {contactUsDetails.number}
+                    <strong>Phone Number : &nbsp;</strong>{" "}
+                    {contactUsDetails.number}
                   </p>
                   <p className={styles.contactUsInputParaBox}>
                     <strong>Email : &nbsp;</strong> {contactUsDetails.email}
                   </p>
                   <p className={styles.contactUsInputParaBox}>
-                    <strong>WhatsApp Number : &nbsp;</strong>{contactUsDetails.whatsappNumber}
+                    <strong>WhatsApp Number : &nbsp;</strong>
+                    {contactUsDetails.whatsappNumber}
                   </p>
                 </>
               )}

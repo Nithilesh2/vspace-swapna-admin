@@ -20,13 +20,27 @@ import PageNotFound from "./components/PageNotFound/PageNotFound"
 import Profile from "./components/Profile/Profile"
 import NewOrders from "./components/NewOrders/NewOrders"
 import BillInvoice from "./components/AllBookings/BillInvoice/BillInvoice"
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import OverviewThatCar from "./components/AllCars/OverviewThatCar";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop"
+import OverviewThatCar from "./components/AllCars/OverviewThatCar"
+import { Bounce, ToastContainer } from "react-toastify"
 
 function App() {
   return (
     <>
-    <ScrollToTop />
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />

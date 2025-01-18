@@ -7,8 +7,12 @@ import "jspdf-autotable"
 import * as XLSX from "xlsx"
 import { saveAs } from "file-saver"
 import { FaDownload, FaFileExcel, FaFilePdf } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const EmployeeList = () => {
+  const green = (data) => toast.success(data)
+  const red = (data) => toast.warning(data)
+
   const [employees, setEmployees] = useState([
     {
       id: 12345,
@@ -71,15 +75,17 @@ const EmployeeList = () => {
         prevEmployees.filter((employee) => employee.id !== selectedEmployeeId)
       )
       setShowPopup(false)
-      alert("Employee suspended successfully!")
+      green("Employee suspended successfully!")
       setPassword('')
     } else {
       setErrorMessage("Incorrect password!")
+      red("Incorrect password!")
     }
   }
 
   const handleCancel = () => {
     setShowPopup(false)
+    red("Suspension Cancelled!");
   }
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
   

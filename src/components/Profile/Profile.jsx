@@ -3,12 +3,15 @@ import styles from "./Profile.module.css"
 import StatusBar from "../Header/index"
 import { FaEye, FaEyeSlash, FaPen } from "react-icons/fa"
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify";
 
 const Profile = () => {
-  const [oldPassword, setOldPassword] = useState("") 
+  const green = (data) => toast.success(data)
+  const red = (data) => toast.warning(data)
+  const [oldPassword, setOldPassword] = useState("")
   const [newPassword, setNewPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
-  const [originalPassword, setOriginalPassword] = useState("") 
+  const [originalPassword, setOriginalPassword] = useState("")
   const [logoImage, setLogoImage] = useState(
     "https://res.cloudinary.com/dagkvnqd9/image/upload/v1726917662/WhatsApp_Image_2024-09-13_at_9.33.52_PM-removebg_oalbnc.png"
   )
@@ -42,7 +45,7 @@ const Profile = () => {
 
     if (newPassword === confirmPassword) {
       if (newPassword.length >= 8) {
-        alert("Password updated successfully")
+        green("Password updated successfully")
         setOriginalPassword(newPassword)
         setOldPassword("")
         setNewPassword("")
@@ -51,10 +54,10 @@ const Profile = () => {
         setShowNewPassword(false)
         setShowCnfrmPassword(false)
       } else {
-        alert("Password should be at least 8 characters long")
+        red("Password should be at least 8 characters long")
       }
     } else {
-      alert("Passwords do not match")
+      red("Passwords do not match")
     }
   }
 
@@ -92,7 +95,6 @@ const Profile = () => {
                   position: "absolute",
                   right: 0,
                   borderRadius: 30,
-                  // backgroundColor: "black",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

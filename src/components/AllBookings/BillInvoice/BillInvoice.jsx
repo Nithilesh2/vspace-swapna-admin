@@ -2,20 +2,25 @@ import React, { useState } from "react";
 import styles from "./BillInvoice.module.css";
 import StatusBar from "../../Header/index";
 import { useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const BillInvoice = () => {
+  const successToast = (message) => toast.success(message);
+  const warningToast = (message) => toast.warning(message);
+
   const [editable, setEditable] = useState(false);
-  
   const location = useLocation();
   const bookingData = location.state;
 
-  const [carDetails, setCarDetails] = useState({
+  const initialCarDetails = {
     name: bookingData.carBooked,
     duration: 24,
-    rate: bookingData.totalCost, 
+    rate: bookingData.totalCost,
     taxRate: 5,
-    customerName: bookingData.customerName
-  });
+    customerName: bookingData.customerName,
+  };
+
+  const [carDetails, setCarDetails] = useState(initialCarDetails);
 
   const calculateTotalWithTax = (rate, taxRate, durationInHours) => {
     const hourlyRate = rate / 24;
@@ -31,6 +36,9 @@ const BillInvoice = () => {
   );
 
   const handleEdit = () => {
+    if (editable) {
+      successToast("Changes saved successfully!");
+    }
     setEditable(!editable);
   };
 
@@ -39,6 +47,12 @@ const BillInvoice = () => {
       ...prevDetails,
       [field]: e.target.value,
     }));
+  };
+
+  const handleDiscard = () => {
+    setCarDetails(initialCarDetails);
+    setEditable(false);
+    warningToast("Changes discarded!");
   };
 
   const date = new Date();
@@ -185,10 +199,22 @@ const BillInvoice = () => {
             >
               {editable ? "Save" : "Edit"}
             </button>
+            {editable && (
+              <button
+                type="button"
+                className={styles.discardBtn}
+                onClick={handleDiscard}
+              >
+                Discard
+              </button>
+            )}
             <button
               type="button"
               className={styles.printBtn}
-              onClick={() => window.print()}
+              onClick={() => {
+                window.print();
+                successToast("Invoice printed successfully!");
+              }}
             >
               Print
             </button>

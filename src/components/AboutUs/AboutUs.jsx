@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import styles from "../Essentials/PrivacyPolicy/PrivacyPolicy.module.css"
 import Statusbar from "../Header/index"
+import { toast } from "react-toastify";
 
 const AboutUs = () => {
+  const green = (data) => toast.success(data)
+  const red = (data) => toast.warning(data)
   const [isEditing, setIsEditing] = useState(false)
   const [policyText, setPolicyText] = useState(
     `
@@ -46,9 +49,9 @@ Choose Swapna Self Drive Cars for a memorable and enjoyable travel experience. L
       setIsEditing(false)
       setShowPasswordPrompt(false)
       setAdminPass("")
-      alert("About Us updated successfully!")
+      green("About Us updated successfully!")
     } else {
-      alert("Incorrect password. Try again!")
+      red("Incorrect password. Try again!")
     }
   }
 
