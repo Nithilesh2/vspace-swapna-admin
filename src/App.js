@@ -1,7 +1,8 @@
 import React from "react"
 import { Routes, Route } from "react-router-dom"
-import Login from "./components/Login" // Import the Login component
-import Home from "./components/Home" // Import the OverviewCards component
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import Login from "./components/Login"
+import Home from "./components/Home" 
 import EmployeeList from "./components/Employee/EmployeeList/EmployeeList"
 import AssignOrder from "./components/AssignOrder/AssignOrder"
 import AddEmployeeRole from "./components/AddEmployeeRole/AddEmployeeRole"
@@ -73,6 +74,7 @@ function App() {
 
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <SpeedInsights />
     </>
   )
 }
