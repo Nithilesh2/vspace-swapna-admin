@@ -13,11 +13,9 @@ const Header = () => {
   const [logoImage] = useState(
     "https://res.cloudinary.com/dagkvnqd9/image/upload/v1726917662/WhatsApp_Image_2024-09-13_at_9.33.52_PM-removebg_oalbnc.png"
   )
-  
 
   const navigate = useNavigate()
 
-  
   const [activeSubmenus, setActiveSubmenus] = useState({
     payments: false,
     employees: false,

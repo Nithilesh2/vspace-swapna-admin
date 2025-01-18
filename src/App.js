@@ -21,6 +21,7 @@ import Profile from "./components/Profile/Profile"
 import NewOrders from "./components/NewOrders/NewOrders"
 import BillInvoice from "./components/AllBookings/BillInvoice/BillInvoice"
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import OverviewThatCar from "./components/AllCars/OverviewThatCar";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/allbookings/bill" element={<BillInvoice />} />
         <Route path="/payments" element={<Payments />} />
         <Route path="/allcars" element={<Cars />} />
+        <Route path="/allcars/:carname" element={<OverviewThatCar />} />
         <Route path="/essentials/privacypolicy" element={<PrivacyPolicy />} />
         <Route
           path="/essentials/termsandconditions"
