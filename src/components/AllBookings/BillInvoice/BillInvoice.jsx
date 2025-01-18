@@ -1,45 +1,51 @@
-import React, { useState } from "react"
-import styles from "./BillInvoice.module.css"
-import StatusBar from "../../Header/index"
+import React, { useState } from "react";
+import styles from "./BillInvoice.module.css";
+import StatusBar from "../../Header/index";
+import { useLocation } from "react-router-dom";
 
 const BillInvoice = () => {
-  const [editable, setEditable] = useState(false)
+  const [editable, setEditable] = useState(false);
+  
+  const location = useLocation();
+  const bookingData = location.state;
 
-  const calculateTotalWithTax = (rate, taxRate, duration) => {
-    const taxAmount = (rate * taxRate) / 100
-    const totalAmount = rate + taxAmount
-    return totalAmount * duration
-  }
-
-  const date = new Date()
-
-  const carDetails = {
-    name: "Swift Dzire",
-    duration: 12,
-    rate: 3500,
+  const [carDetails, setCarDetails] = useState({
+    name: bookingData.carBooked,
+    duration: 24,
+    rate: bookingData.totalCost, 
     taxRate: 5,
-  }
+    customerName: bookingData.customerName
+  });
+
+  const calculateTotalWithTax = (rate, taxRate, durationInHours) => {
+    const hourlyRate = rate / 24;
+    const baseAmount = hourlyRate * durationInHours;
+    const taxAmount = baseAmount * (taxRate / 100);
+    return baseAmount + taxAmount;
+  };
 
   const totalWithTax = calculateTotalWithTax(
     carDetails.rate,
     carDetails.taxRate,
-    carDetails.duration / 12
-  )
+    carDetails.duration
+  );
 
   const handleEdit = () => {
-    alert(
-      'You can edit the fields by clicking directly on that text. At last click "Save" when you are done.'
-    )
-    setEditable(!editable)
-  }
+    setEditable(!editable);
+  };
+
+  const handleChange = (e, field) => {
+    setCarDetails((prevDetails) => ({
+      ...prevDetails,
+      [field]: e.target.value,
+    }));
+  };
+
+  const date = new Date();
 
   return (
     <>
-      <div
-        className={styles.main}
-        contentEditable={editable}
-        suppressContentEditableWarning={true}
-      >
+      <div className={styles.main}>
         <StatusBar className={styles.statusBar} />
         <div className={styles.container}>
           <h2 className={styles.heading}>Bill</h2>
@@ -68,7 +74,7 @@ const BillInvoice = () => {
               </div>
               <div className={styles.billTo}>
                 <div className={styles.toDetailsB}>Bill To : </div>
-                <div className={styles.toDetails}>Mr. Ramesh</div>
+                <div className={styles.toDetails}>{carDetails.customerName}</div>
                 <div className={styles.toDetails}>
                   Sangamner, Hyderabad, Telangana, 500025.
                 </div>
@@ -86,14 +92,65 @@ const BillInvoice = () => {
                 <div className={styles.header}>Amount</div>
               </div>
               <div className={styles.dataBox}>
-                <div className={styles.data}>{carDetails.name}</div>
-                <div className={styles.data}>{carDetails.duration} hours</div>
-                <div className={styles.data}>{carDetails.rate}</div>
                 <div className={styles.data}>
-                  {carDetails.taxRate}% (
-                  {((carDetails.rate * carDetails.taxRate) / 100).toFixed(2)})
+                  {editable ? (
+                    <input
+                      type="text"
+                      value={carDetails.name}
+                      onChange={(e) => handleChange(e, "name")}
+                      className={styles.editableInput}
+                    />
+                  ) : (
+                    carDetails.name
+                  )}
                 </div>
-                <div className={styles.data}>Rs. {totalWithTax.toFixed(2)}</div>
+                <div className={styles.data}>
+                  {editable ? (
+                    <input
+                      type="number"
+                      value={carDetails.duration}
+                      onChange={(e) => handleChange(e, "duration")}
+                      className={styles.editableInput}
+                      min={0}
+                    />
+                  ) : (
+                    `${carDetails.duration} hours`
+                  )}
+                </div>
+                <div className={styles.data}>
+                  {editable ? (
+                    <input
+                      type="number"
+                      value={carDetails.rate}
+                      onChange={(e) => handleChange(e, "rate")}
+                      className={styles.editableInput}
+                      min={0}
+                    />
+                  ) : (
+                    carDetails.rate
+                  )}
+                </div>
+                <div className={styles.data}>
+                  {editable ? (
+                    <input
+                      type="number"
+                      value={carDetails.taxRate}
+                      onChange={(e) => handleChange(e, "taxRate")}
+                      className={styles.editableInput}
+                      min={0}
+                    />
+                  ) : (
+                    `${carDetails.taxRate}%`
+                  )}
+                  {editable && (
+                    <span className={styles.taxAmount}>
+                      ({((carDetails.rate * carDetails.taxRate) / 100).toFixed(2)})
+                    </span>
+                  )}
+                </div>
+                <div className={styles.data}>
+                  Rs. {totalWithTax.toFixed(2)}
+                </div>
               </div>
             </div>
 
@@ -126,7 +183,7 @@ const BillInvoice = () => {
               className={styles.editBtn}
               onClick={handleEdit}
             >
-              Edit
+              {editable ? "Save" : "Edit"}
             </button>
             <button
               type="button"
@@ -142,7 +199,7 @@ const BillInvoice = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default BillInvoice
+export default BillInvoice;

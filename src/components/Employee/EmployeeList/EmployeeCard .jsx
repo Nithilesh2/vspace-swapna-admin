@@ -58,7 +58,7 @@ const EmployeeCard = ({
     <div className={styles.card}>
       <div className={styles.profile}>
         <div className={styles.profileIcon}>
-          <FaUserCircle size={60} />
+          <FaUserCircle size={130} color="grey"/>
         </div>
 
         <div className={styles.boxes}>

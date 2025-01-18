@@ -92,7 +92,7 @@ const Profile = () => {
                   position: "absolute",
                   right: 0,
                   borderRadius: 30,
-                  backgroundColor: "black",
+                  // backgroundColor: "black",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
